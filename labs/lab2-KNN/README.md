@@ -39,8 +39,10 @@ the upper left and 9,9 is the bottom right). Which of these (1vs2 or
 (B) Let's verify that KNN does very well on training data. Run the
 following:
 
+````
 % python KNN.py data/1vs2.tr data/1vs2.tr 1
 0.0
+````
 
 This says "do KNN, with 1vs2.tr as the training data and
 1vs2.tr as the testing data, using K=1." The 0.0 is the error rate,
@@ -50,8 +52,10 @@ which is zero. Verify the same thing for 2vs3.tr
 K and get error rates for all of them. In particular, you can say
 something like:
 
+````
 % python KNN.py data/1vs2.tr data/1vs2.tr 1 5 10 25 50 100
-0.0	0.08	0.12	0.16	0.28	0.5
+0.0 0.08 0.12 0.16 0.28 0.5
+````
 
 This runs the same thing for six values of K (1, 5, ..., 100) and
 prints the respective error rates. Notice that for K=100 the error

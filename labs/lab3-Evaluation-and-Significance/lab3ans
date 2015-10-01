@@ -1,21 +1,7 @@
 # Lab 3: Evaluation and Significance
 
-Today's lab is about evaluating learning algorithm. I've provided the
-true labels from last year's P1 "last part" assignment (note: it was a
-different task), and the solutions produced by the top three
-teams.
 
-You can start by loading ``eval.py`` into a python shell. This will
-load in the true labels to the variable ``Y`` and the top three
-solutions into ``allP[0]``, ``[1]`` and ``[2]``, respectively (0 is
-the "winner").
-
-A) Compute the accuracies of these three solutions. This should be a
-one-linear in python using numpy. The labels are 0 or 1, and the
-predicted values are all between 0 and 1. You should treat anything
-over 0.5 as "1" and <=0.5 as "0". Hint: look at np.average or
-np.mean. If you cannot do it in one line (think about it first!) ask
-me.
+A) Compute the accuracies of these three solutions.
 
 >>> np.count_nonzero(np.greater(allP[0], .5) == Y)/ float(Y.size)
 0.7502952755905512
@@ -32,27 +18,13 @@ me.
 >>> np.mean(np.greater(allP[2], .5) == Y)
 0.73750000000000004
 
+[np.mean(np.greater(allP[i], .5) == Y) for i in range(len(allP))]
 
-You can draw precision/recall curves for this data using:
+[0.7502952755905512, 0.7382874015748031, 0.73750000000000004]
 
-```python
->>> makeManyCurves(Y,allP)
-```
-
-In this, the X-axis is precision and the Y-axis is recall. This is
-obtained by varying the threshold away from 0.5.
 
 B) Does a high threshold lead to high precision and low recall or high
 recall and low precision? What about a low threshold?
-
-1 - 1 = TP
-1 - 0 = FN
-0 - 1 = FP
-0 - 0 = TN  
-
-Precision = TP / TP + FP
-Recall = TP / TP + FN
-
 
 High Threshold
 a high threshold lead to high precision and low recall because the number of False Positives will decrease and False Negatives(number of 1s cl) will increase.
@@ -61,11 +33,15 @@ Low Threshold
 A low threshold will lead to a lot of False positives so my precision will drop. 
 Recall goes higher as the number of false negatives will decrease.
 
-Sometimes you care about high precision systems. For instance, I might
-say "if I require a precision of at least 0.75, how high of a recall
-can I get? This means that I want a system that, when it says "yes"
-it's right 75% of the time... what percentage of the true "yes"
-answers can I find.
+classify  | ans 
+1 - 1 = TP
+1 - 0 = FN
+0 - 1 = FP
+0 - 0 = TN  
+
+Precision = TP / TP + FP
+Recall = TP / TP + FN
+
 
 C) This measure is called "recall at P=0.75" -- what is it
 (approximately) for the three curves?
@@ -83,20 +59,10 @@ something like:
 (4.1490355592633517, 'significant at 99.5% level')
 ```
 
-This says that the first place team is better than the second place
-team with 99.5% confidence.
-
 ```python
 >>> ttest(Y, allP[2], allP[1])
 (0.20950326198721958, 'not significant at 90% level')
 ```
-
-This says that the second place team is not significantly better than
-the third place team, even at 90%.
-
-Now, if you have less data, you are often less likely to be able to
-tease apart significant differences. We can force the ttest to run on
-a subset of the data:
 
 ```python
 >>> ttest(Y, allP[1], allP[0], restrictTo=500)
@@ -106,18 +72,23 @@ a subset of the data:
 (2.0814897135353521, 'significant at 97.5% level')
 ```
 
-You can plot the t-statistic as a function of the amount of data
-using:
+MY RESULTS
+ 
+ttest(Y, allP[1], allP[0])
+(4.1490355592636643, 'significant at 99.5% level')
+>>> ttest(Y, allP[2], allP[1])
+(0.20950326198722602, 'not significant at 90% level')
+ 
+>>> ttest(Y, allP[1], allP[0], restrictTo=500)
+(0.71393541680371686, 'not significant at 90% level')
+>>> ttest(Y, allP[1], allP[0], restrictTo=750)
+(1.6396887683414707, 'significant at 90% level')
 
-```python
->>> plt.plot([ttest(Y,allP[1],allP[0], i)[0] for i in range(10160)])
->>> plt.show()
-```
-
-(There will be a couple warnings that you can ignore.)
+I attached some of the plots that i got comparing algo 1 and algo 0.
+Both at 10610 and 5000 samples focusing on 95% significance
 
 D) Based on this, how much data do you need to get 95% significance?
-99.5% significance?  Around 658 samples, Around above 738 to 762, then back 
+
 
 If I want to find all the data samples where I could get 95% significance, I ran this and got all the number of samples i need to get 95% under 5000. Above 5000
 is always different t values.

@@ -17,6 +17,22 @@ over 0.5 as "1" and <=0.5 as "0". Hint: look at np.average or
 np.mean. If you cannot do it in one line (think about it first!) ask
 me.
 
+>>> np.count_nonzero(np.greater(allP[0], .5) == Y)/ float(Y.size)
+0.7502952755905512
+>>> np.count_nonzero(np.greater(allP[1], .5) == Y)/ float(Y.size)
+0.7382874015748031
+>>> np.count_nonzero(np.greater(allP[2], .5) == Y)/ float(Y.size)
+0.7375
+>>>
+///////////////////////////////// alternate solution //////////////////
+>>> np.mean(np.greater(allP[0], .5) == Y)
+0.7502952755905512
+>>> np.mean(np.greater(allP[1], .5) == Y)
+0.7382874015748031
+>>> np.mean(np.greater(allP[2], .5) == Y)
+0.73750000000000004
+
+
 You can draw precision/recall curves for this data using:
 
 ```python
@@ -28,6 +44,22 @@ obtained by varying the threshold away from 0.5.
 
 B) Does a high threshold lead to high precision and low recall or high
 recall and low precision? What about a low threshold?
+
+1 - 1 = TP
+1 - 0 = FN
+0 - 1 = FP
+0 - 0 = TN  
+
+Precision = TP / TP + FP
+Recall = TP / TP + FN
+
+
+High Threshold
+a high threshold lead to high precision and low recall because the number of False Positives will decrease and False Negatives(number of 1s cl) will increase.
+
+Low Threshold
+A low threshold will lead to a lot of False positives so my precision will drop. 
+Recall goes higher as the number of false negatives will decrease.
 
 Sometimes you care about high precision systems. For instance, I might
 say "if I require a precision of at least 0.75, how high of a recall

@@ -1,5 +1,5 @@
 all: book/courseml.pdf
-all: book/foo.pdf
+#all: book/foo.pdf		# requires font: segoeuil
 all: slides/01-intro/lec.pdf
 all: slides/01-intro/test.pdf
 all: slides/01-intro/training.pdf

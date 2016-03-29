@@ -24,7 +24,7 @@ def makeOnePreRecCurve(Y, P, doHold=True, color='b-'):
         # which means that S always increases by one
         # I increases by one if a[n][1] is true
         S += 1.0
-        if a[n]['y'] > 0.5:
+        if a[n]['y'] > 0.3:
             I += 1.0
         pre = divide(I, S)
         rec = divide(I, T)
@@ -85,17 +85,17 @@ def ttest(Y, P0, P1, restrictTo=None):
     mu_b = np.mean(b)
 
     # center the errors
-    ahat = 0   # TODO
-    bhat = 0   # TODO
+    ahat = np.subtract(a,mu_a)   # TODO
+    bhat = np.subtract(b,mu_b)   # TODO
 
     # compute the denominator
-    diff = 0   # TODO
+    diff = sum(np.power(np.subtract(ahat,bhat),2))    # TODO
 
     # make sure it's not infinite
     diff = min(diff, 1e10)
 
     # compute the t-statistic
-    t = 0 # TODO
+    t = (mu_a-mu_b)*sqrt((N*(N-1))/(diff)) # TODO
 
     # look up significance
     sig = "not significant at 90% level"

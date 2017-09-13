@@ -330,7 +330,7 @@ weight vectors, $\vw$, that have length one; i.e., $\norm{\vw} = 1$.
   how do I compute a weight vector $\vw'$ that points in the same
   direction but has a norm of one?}
 
-\MoveNextFigure{-2cm}
+%\MoveNextFigure{-2cm}
 \Figure{perc:proj}{The same picture as before, but with projections onto
   weight vector; then, below, those points along a
   one-dimensional axis with zero marked.}
@@ -353,8 +353,6 @@ this threshold.  Now, after the projection is computed, $b$ is added
 to get the overall activation.  The projection \emph{plus} $b$ is then
 compared against zero.
 
-\TODOFigure{perc:bias}{perceptron picture with bias}
-
 Thus, from a geometric perspective, the role of the bias is to
 \emph{shift} the decision boundary away from the origin, in the
 direction of $\vw$.  It is shifted exactly $-b$ units.  So if $b$ is
@@ -364,6 +362,8 @@ Figure~\ref{fig:perc:bias}.  This makes intuitive sense: a positive
 bias means that more examples should be classified positive.  By
 moving the decision boundary in the negative direction, more space
 yields a positive classification.
+
+\TODOFigure{perc:bias}{perceptron picture with bias}
 
 The decision boundary for a perceptron is a very magical thing.  In
 $D$ dimensional space, it is always a $D-1$-dimensional hyperplane.

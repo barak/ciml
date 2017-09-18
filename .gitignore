@@ -1,8 +1,9 @@
 # Ignore .aux files
 *.aux
 
-# Ignore foo directory
-/book/foo/
+# Ignore latexmk files
+*.fdb_latexmk
+*.fls
 
 # Ignore generated files
 /book/courseml.bbl
@@ -14,8 +15,6 @@
 /book/courseml.out
 /book/courseml.pdf
 /book/courseml.toc
-/book/foo.log
-/book/foo.pdf
 /book/missfont.log
 /book/toc.html
 /slides/01-intro/lec.bbl
@@ -44,3 +43,6 @@
 /slides/04-feature_rep/features.pdf
 /slides/04-feature_rep/features.snm
 /slides/04-feature_rep/features.toc
+
+# ignore downloaded files
+/book/picins.sty

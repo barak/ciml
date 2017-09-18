@@ -2,9 +2,7 @@
 \hypersetup{colorlinks}
 
 \usepackage[T1]{fontenc}
-%\font\ttfsegoeuil segoeuil at16pt
-%\font\ttfsegoeuilhuge segoeuil at36pt
-%\font\ttfgillsans GillSans at12pt
+
 \font\ttfsegoeuilsmall Colaborate-Thin at12pt
 \font\ttfsegoeuil Colaborate-Thin at16pt
 \font\ttfsegoeuilhuge Colaborate-Thin at30pt
@@ -18,7 +16,8 @@
 
 \usepackage{amsthm}
 \usepackage{xcolor}
-\usepackage{wrapfig}
+%\usepackage{wrapfig}
+\usepackage{picins}
 \usepackage{soul}
 \usepackage{lipsum}
 \usepackage{booktabs}
@@ -61,8 +60,8 @@
 
 \begin{document}
 
-\Opensolutionfile{solutions}[ans2]{Solutions}
-\Writetofile{solutions}{\protect\chapter{Solutions To Exercises}}
+%\Opensolutionfile{solutions}[ans2]{Solutions}
+%\Writetofile{solutions}{\protect\chapter{Solutions To Exercises}}
 
 \setcounter{secnumdepth}{3}
 
@@ -84,13 +83,15 @@
 \tableofcontents
 %\listoffigures
 %\listoftables
-%\cleardoublepage
+\cleardoublepage
 \include{intro}
 \mainmatter
 \include{dt}
+\include{formal}
 \include{knn}
 \include{perc}
 \include{prac}
+\include{bias}
 \include{complex}
 \include{loss}
 \include{prob}
@@ -101,21 +102,22 @@
 \include{opt}
 \include{unsup}
 \include{em}
-\include{semi}
-\include{gm}
-\include{online}
+% NOT WRITTEN \include{semi}
+% NOT WRITTEN \include{gm}
+% NOT WRITTEN \include{online}
 \include{srl}
-\include{bayes}
+\include{imit}
+% NOT WRITTEN \include{bayes}
 
 \appendix
 \backmatter
 \include{data}
-\include{not}
+% NOT WRITTEN \include{not}
 
 \bibliographystyle{plainnat}
 \bibliography{bibfile}
 
-\Closesolutionfile{solutions}
+%\Closesolutionfile{solutions}
 %\Readsolutionfile{solutions}
 
 {

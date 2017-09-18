@@ -1,13 +1,15 @@
 all: book/courseml.pdf
-#all: book/foo.pdf		# requires font: segoeuil
 all: slides/01-intro/lec.pdf
 all: slides/01-intro/test.pdf
 all: slides/01-intro/training.pdf
 all: slides/04-feature_rep/features.pdf
 
-RUBBER=rubber
+.PHONY: all
 
 %.pdf: %.tex
-	$(RUBBER) --inplace --pdf $<
+	cd "$(shell dirname $<)" && latexmk --pdf "$(shell basename $<)"
 
-.PHONY: all
+book/courseml.pdf: book/picins.sty
+
+book/picins.sty:
+	wget -O $@ http://mirror.unl.edu/ctan/macros/latex209/contrib/picins/picins.sty

@@ -157,6 +157,8 @@ Here, the first term is the old prediction. The second term is of the form $\dot
 This gives rise to the updated multiclass perceptron specified in Algorithm~\ref{alg:srl:featperc}.
 As with the normal perceptron, the generalization of the multiclass perceptron increases dramatically if you do weight averaging.
 
+\thinkaboutit{Suppose you have a \emph{hierarchy} of classes arranged in a tree. How could you use that to construct a feature representation. You can think of the music/movies/oncology example as a binary tree: the left branch of the root splits into music and movies; the right branch of the root is just oncology.}
+
 An important note is that MulticlassPerceptronTrain is actually more powerful than suggested so far.
 For instance, suppose that you have three categories, but believe that two of them are tightly related, while the third is very different.
 For instance, the categories might be $\{ \text{music}, \text{movies}, \text{oncology} \}$.
@@ -167,7 +169,7 @@ You can encode this relatedness by defining a feature expansion $\phi$ that refl
   \phi(\vx, \text{oncology}) &= \langle \vec 0, \vec 0, \vx   , \vec 0 \rangle
 \end{align}
 This encoding is identical to the normal encoding in the first three positions, but includes an extra copy of the features at the end, shared between music and movies.
-By doing so, if the perceptron wants to learn something common to music and movies, it can use this final shared position.\thinkaboutit{Suppose you have a \emph{hierarchy} of classes arranged in a tree. How could you use that to construct a feature representation. You can think of the music/movies/oncology example as a binary tree: the left branch of the root splits into music and movies; the right branch of the root is just oncology.}
+By doing so, if the perceptron wants to learn something common to music and movies, it can use this final shared position.
 
 \section{Structured Perceptron}
 

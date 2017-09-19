@@ -677,8 +677,12 @@ units are computed as:
 h_i = \exp\left[ - \ga_i \norm{\vw_i - \vx}^2 \right]
 \end{equation}
 %
-\TODOFigure{nnet:rbfpicture}{a one-D picture of RBF bumps}
+\thinkaboutit{Consider an RBF network with one hidden unit per
+	training point, centered at that point.  What bad thing might happen
+	if you use back-propagation to estimate the $\ga$s and $\vec v$ on
+	this data if you're not careful?  How could you be careful?}
 
+\TODOFigure{nnet:rbfpicture}{a one-D picture of RBF bumps}
 \TODOFigure{nnet:unitsymbols}{picture of nnet with sigmoid/rbf units}
 %
 In other words, the hidden units behave like little Gaussian ``bumps''
@@ -707,11 +711,6 @@ something that looks nearly identical to distance-weighted $K$NN by
 doing so.  This has the added advantage that you can go futher, and
 use back-propagation to \emph{learn} good Gaussian widths ($\ga$) and
 ``voting'' factors ($\vec v$) for the nearest neighbor algorithm.
-
-\thinkaboutit{Consider an RBF network with one hidden unit per
-  training point, centered at that point.  What bad thing might happen
-  if you use back-propagation to estimate the $\ga$s and $\vec v$ on
-  this data if you're not careful?  How could you be careful?}
 
 % If you use \emph{fewer} hidden units than data point, you can think
 % of this technique as a \concept{locally weighted linear model}.

@@ -678,6 +678,7 @@ h_i = \exp\left[ - \ga_i \norm{\vw_i - \vx}^2 \right]
 \end{equation}
 %
 \TODOFigure{nnet:rbfpicture}{a one-D picture of RBF bumps}
+
 \TODOFigure{nnet:unitsymbols}{picture of nnet with sigmoid/rbf units}
 %
 In other words, the hidden units behave like little Gaussian ``bumps''
@@ -689,7 +690,7 @@ $\vw_i$ have non-zero activations.  To distinguish sigmoid networks
 from RBF networks, the hidden units are typically drawn with sigmoids
 or with Gaussian bumps, as in Figure~\ref{fig:nnet:unitsymbols}.
 
-Training RBF networks involves finding good values for the Gassian
+Training RBF networks involves finding good values for the Gaussian
 widths, $\ga_i$, the centers of the Gaussian bumps, $\vw_i$ and the
 connections between the Gaussian bumps and the output unit, $\vec v$.
 This can all be done using back-propagation.  The gradient terms for

@@ -403,7 +403,7 @@ The bottom ten are the features that the perceptron is most sensitive to for mak
 
 This heuristic is useful, especially when the inputs $\vx$ consist entirely of binary values (like a bag of words representation).
 The heuristic is less useful when the range of the individual features varies significantly.
-The issue is that if you have one feat $x_5$ that's either $0$ or $1$, and another feature $x_7$ that's either $0$ or $100$, but $w_5 = w_7$, it's reasonable to say that $w_7$ is more important because it is likely to have a much larger influence on the final prediction.
+The issue is that if you have one feature $x_5$ that's either $0$ or $1$, and another feature $x_7$ that's either $0$ or $100$, but $w_5 = w_7$, it's reasonable to say that $w_7$ is more important because it is likely to have a much larger influence on the final prediction.
 The easiest way to compensate for this is simply to scale your features ahead of time:
 this is another reason why feature scaling is a useful preprocessing step.
 

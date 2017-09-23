@@ -1013,7 +1013,7 @@ Because one of the key questions in machine learning is the question of represen
 Here, the second term, the \concept{approximation error}, measures the quality of the model family\footnote{The ``model family'' (such as depth 20 decision trees, or linear classifiers) is often refered to as the \concept{hypothesis class}. The hypothesis class $\cF$ denotes the set of all possible classifiers we consider, such as all linear classifiers. An classifier $f \in \cF$ is sometimes called a \concept{hypothesis}, though we generally avoid this latter terminology here.}. One way of thinking of approximation error is: suppose someone gave me infinite data to train on---how well could I do with this representation?
 The first term, the \concept{estimation error}, measures how far the actual learned classifier $f$ is from the optimal classifier $f^*$. You can think of this term as measuring how much you have to pay for the fact that you \emph{don't} have infinite training data.
 
-Unfortunately, it is nearly impossible to \emph{compute} the estimation error and approxiation error, except in constructed cases.
+Unfortunately, it is nearly impossible to \emph{compute} the estimation error and approximation error, except in constructed cases.
 This doesn't make the decomposition useless.
 Decompositions like this are very useful for designing debugging strategies.
 For instance, the \text{CheatingIsFun} strategy is designed explicitly to ensure that the approximation error is zero, and therefore isolating all error into the estimation error.

@@ -144,7 +144,7 @@ single layer networks (i.e., perceptrons).  To see this, you can
 construct a very small two-layer network for solving the XOR problem.
 For simplicity, suppose that the data set consists of four data
 points, given in Table~\ref{tab:nnet:xor}.  The classification rule is
-that $y=+1$ if an only if $x_1=x_2$, where the features are just $\pm
+that $y=+1$ if and only if $x_1=x_2$, where the features are just $\pm
 1$.
 
 You can solve this problem using a two layer network with two hidden
@@ -215,7 +215,7 @@ regularization.  In both view, the number of hidden units controls how
 complex your function will be.  Lots of hidden units $\Rightarrow$
 very complicated function.  %Figure~\ref{fig:nnet:units} shows training
 %and test error for neural networks trained with different numbers of
-%hidden units.  
+%hidden units.
 As the number increases, training performance continues
 to get better.  But at some point, test performance gets worse because
 the network has overfit the data.
@@ -252,7 +252,7 @@ squared error with your loss function of choice.  Our overall
 objective is:
 %
 \optimizeuc{nnet:twolayer}{\mat W,\vec v}{%
-  \sum_n \frac 1 2 \left( \textcolor{darkblue}{y_n - 
+  \sum_n \frac 1 2 \left( \textcolor{darkblue}{y_n -
      \sum_i v_i f(\dotp{\vec w_i}{\vx_n})}
      \right)^2}
 %
@@ -273,7 +273,7 @@ $\vec h_n$ denote the vector of hidden unit activations on that
 example.  Then:
 %
 \begin{equation}
-\grad_{\vec v} = -\sum_n e_n \vec h_n 
+\grad_{\vec v} = -\sum_n e_n \vec h_n
 \end{equation}
 %
 This is exactly like the linear case.  One way of interpreting this
@@ -293,8 +293,8 @@ Thankfully, the chain rule of calculus saves us.  Ignoring the sum
 over data points, we can compute:
 %
 \begin{align}
-\cL(\mat W) &= 
-\frac 1 2 \left( \textcolor{darkblue}{y - 
+\cL(\mat W) &=
+\frac 1 2 \left( \textcolor{darkblue}{y -
      \sum_i v_i f(\dotp{\vec w_i}{\vx})}
      \right)^2
 \\
@@ -469,13 +469,13 @@ difficult to interpret.  You've seen that, for linear networks, you
 can often interpret high weights as indicative of positive examples
 and low weights as indicative of negative examples.  In multilayer
 networks, it becomes very difficult to try to understand what the
-different hidden units are doing.  
+different hidden units are doing.
 
 %TODO: maybe have something about doing images?
 
 
 \section{Beyond Two Layers}
-
+\MoveNextFigure{-10cm}
 \Figure{nnet:layered}{multi-layer network}
 
 The definition of neural networks and the back-propagation algorithm
@@ -486,6 +486,7 @@ strong reason (aka inductive bias) to do something different.
 However, the view as a directed graph sheds a different sort of
 insight on the back-propagation algorithm.
 
+\MoveNextFigure{-1cm}
 \Figure{nnet:dag}{DAG network}
 
 Suppose that your network structure is stored in some directed acyclic
@@ -536,6 +537,7 @@ computes derivatives of the edge weights for a given input.
 \RETURN all gradients $g_e$
 }
 
+\MoveNextFigure{-8cm}
 \Figure{nnet:forwardprop}{picture of forward prop}
 
 The key aspect of the \concept{forward-propagation} algorithm is to
@@ -675,6 +677,11 @@ units are computed as:
 h_i = \exp\left[ - \ga_i \norm{\vw_i - \vx}^2 \right]
 \end{equation}
 %
+\thinkaboutit{Consider an RBF network with one hidden unit per
+	training point, centered at that point.  What bad thing might happen
+	if you use back-propagation to estimate the $\ga$s and $\vec v$ on
+	this data if you're not careful?  How could you be careful?}
+
 \TODOFigure{nnet:rbfpicture}{a one-D picture of RBF bumps}
 \TODOFigure{nnet:unitsymbols}{picture of nnet with sigmoid/rbf units}
 %
@@ -687,7 +694,7 @@ $\vw_i$ have non-zero activations.  To distinguish sigmoid networks
 from RBF networks, the hidden units are typically drawn with sigmoids
 or with Gaussian bumps, as in Figure~\ref{fig:nnet:unitsymbols}.
 
-Training RBF networks involves finding good values for the Gassian
+Training RBF networks involves finding good values for the Gaussian
 widths, $\ga_i$, the centers of the Gaussian bumps, $\vw_i$ and the
 connections between the Gaussian bumps and the output unit, $\vec v$.
 This can all be done using back-propagation.  The gradient terms for
@@ -704,11 +711,6 @@ something that looks nearly identical to distance-weighted $K$NN by
 doing so.  This has the added advantage that you can go futher, and
 use back-propagation to \emph{learn} good Gaussian widths ($\ga$) and
 ``voting'' factors ($\vec v$) for the nearest neighbor algorithm.
-
-\thinkaboutit{Consider an RBF network with one hidden unit per
-  training point, centered at that point.  What bad thing might happen
-  if you use back-propagation to estimate the $\ga$s and $\vec v$ on
-  this data if you're not careful?  How could you be careful?}
 
 % If you use \emph{fewer} hidden units than data point, you can think
 % of this technique as a \concept{locally weighted linear model}.
@@ -734,7 +736,7 @@ TODO further reading
 \end{comment}
 
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "courseml"
-%%% End: 
+%%% End:

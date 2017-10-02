@@ -4,6 +4,11 @@ all: slides/01-intro/test.pdf
 all: slides/01-intro/training.pdf
 all: slides/04-feature_rep/features.pdf
 
+all: slides-beamer/kernel-slides.pdf
+all: slides-beamer/loss-slides.pdf
+all: slides-beamer/nnet-slides.pdf
+all: slides-beamer/perc-slides.pdf
+
 .PHONY: all
 
 %.pdf: %.tex

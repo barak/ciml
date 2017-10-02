@@ -1,48 +1,28 @@
-# Ignore .aux files
+# Ignore build debris
 *.aux
-
-# Ignore latexmk files
+*.bbl
+*.blg
 *.fdb_latexmk
 *.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.nav
+*.out
+*.snm
+*.toc
 
-# Ignore generated files
-/book/courseml.bbl
-/book/courseml.blg
-/book/courseml.idx
-/book/courseml.ilg
-/book/courseml.ind
-/book/courseml.log
-/book/courseml.out
+# Ignore generated output
 /book/courseml.pdf
-/book/courseml.toc
-/book/missfont.log
-/book/toc.html
-/slides/01-intro/lec.bbl
-/slides/01-intro/lec.blg
-/slides/01-intro/lec.log
-/slides/01-intro/lec.nav
-/slides/01-intro/lec.out
 /slides/01-intro/lec.pdf
-/slides/01-intro/lec.snm
-/slides/01-intro/lec.toc
-/slides/01-intro/test.bbl
-/slides/01-intro/test.blg
-/slides/01-intro/test.log
-/slides/01-intro/test.nav
-/slides/01-intro/test.out
 /slides/01-intro/test.pdf
-/slides/01-intro/test.snm
-/slides/01-intro/test.toc
-/slides/01-intro/training.log
 /slides/01-intro/training.pdf
-/slides/04-feature_rep/features.bbl
-/slides/04-feature_rep/features.blg
-/slides/04-feature_rep/features.log
-/slides/04-feature_rep/features.nav
-/slides/04-feature_rep/features.out
 /slides/04-feature_rep/features.pdf
-/slides/04-feature_rep/features.snm
-/slides/04-feature_rep/features.toc
+/slides-beamer/kernel-slides.pdf
+/slides-beamer/loss-slides.pdf
+/slides-beamer/nnet-slides.pdf
+/slides-beamer/perc-slides.pdf
 
 # ignore downloaded files
 /book/picins.sty

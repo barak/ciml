@@ -394,7 +394,7 @@ doing, consider what prediction looks like in the perceptron:
 %
 \begin{align}
 f(\vx) &= \sum_n \al_n K(\vx_n, \vx) + b \\
-&= \sum_n \al_n \exp\left[ - \ga \norm{\vx_n-\vz}^2 \right]
+&= \sum_n \al_n \exp\left[ - \ga \norm{\vx_n-\vx}^2 \right]
 \end{align}
 %
 In this computation, each training example is getting to ``vote'' on

@@ -60,7 +60,7 @@ $s_n = \frac 1 M \sum_m \Ind[a_{n,m} = t_m]$.
 
 Once we have these scores, however, we might want to trust some of the students more than others.
 In particular, answers from students with high scores are perhaps more likely to be correct, so we can \emph{recompute} the ground truth, according to weighted votes.
-The weight of the votes will be precisely the score the corresponding each student:
+The weight of the votes will be precisely the score corresponding to each student:
 %
 \begin{align}
   t_m = \argmax_t \sum_n s_n \Ind[a_{n,m} = t]

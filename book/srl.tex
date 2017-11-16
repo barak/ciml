@@ -209,7 +209,7 @@ Now that we have a fixed size feature representation, we can develop a perceptro
 The core idea is the same as before.
 We will maintain a \emph{single} weight vector $\vw$.
 We will make predictions by choosing the (entire) output sequence $\hat\vy$ that maximizes a score given by $\dotp{\vw}{\phi(\vx,\hat\vy)}$.
-And if this output sequence is incorrect, we will adjust the weights \emph{word} the correct output sequence $\vy$ and away from the incorrect output sequence $\hat\vy$.
+And if this output sequence is incorrect, we will adjust the weights \emph{toward} the correct output sequence $\vy$ and away from the incorrect output sequence $\hat\vy$.
 This is summarized in Algorithm~\ref{alg:srl:strperc}
 
 \newalgorithm%

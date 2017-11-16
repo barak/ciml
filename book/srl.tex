@@ -309,7 +309,7 @@ In Section~\ref{sec:loss:svm} we saw the support vector machine as a very useful
 In this section, we will develop a related framework for structured support vector machines.
 The two main advantages of structured SVMs over the structured perceptron are (1) it is regularized (though averaging in structured perceptron achieves a similar effect) and (2) we can incorporate more complex loss functions.
 
-In particular, one suboptimal thing about the structured perceptron is that all errors are consider equally bad.
+In particular, one suboptimal thing about the structured perceptron is that all errors are considered equally bad.
 For structured problems, we often have much more nuanced and elaborate loss functions that we want to optimize.
 Even for sequence labeling, it is typically far worse to label every word incorrectly than to just label one word incorrectly.
 It is very common to use \concept{Hamming loss} as a general loss function for structured prediction.

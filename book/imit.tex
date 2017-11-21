@@ -242,7 +242,7 @@ This requires a bit more computation, but is a much better approach in general.
 
 One major difference in \emph{requirements} between Dagger (Algorithm~\ref{alg:imit:dagger}) and SupervisedIL (Algorithm~\ref{alg:imit:supertrain}) is the requirement of interaction with the expert.
 In SupervisedIL, you only need access to a bunch of trajectories taken by the expert, \emph{passively}.
-In Dagger, you need access to them expert themselves, so you can ask questions like ``if you saw configuration $\vx$, what would you do?''
+In Dagger, you need access to the expert themselves, so you can ask questions like ``if you saw configuration $\vx$, what would you do?''
 This puts \emph{much} more demand on the expert.
 
 Another question that arises is: what should $N$, the number of trajectories generated in each round, be?

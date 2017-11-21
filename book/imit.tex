@@ -345,7 +345,7 @@ In this case, we have a time horizon $T=4$.
 We want to learn a policy $f$ that first predicts ``noun'' then ``verb'' then ``adj'' then ``noun'' on this input.
 
 Let's suppose that the input to $f$ consists of features extracted both from the input ($\vx)$ and the current predicted output prefix $\hat\vy$, denoted $\phi(\vx, \hat\vy)$.
-For instance, $\phi(\vx,\hat\vy)$ might represent a similar set of features to those use in Chapter~\ref{sec:srl}.
+For instance, $\phi(\vx,\hat\vy)$ might represent a similar set of features to those used in Chapter~\ref{sec:srl}.
 It is perhaps easiest to think of $f$ as just a classifier:
 given some features of the input sentence $\vx$ (``monsters eat tasty bunnies''),
 and some features about previous predictions in the output prefix (so far, produced ``noun verb''),

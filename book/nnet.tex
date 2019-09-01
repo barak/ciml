@@ -475,7 +475,7 @@ different hidden units are doing.
 
 
 \section{Beyond Two Layers}
-
+\MoveNextFigure{-10cm}
 \Figure{nnet:layered}{multi-layer network}
 
 The definition of neural networks and the back-propagation algorithm
@@ -486,6 +486,7 @@ strong reason (aka inductive bias) to do something different.
 However, the view as a directed graph sheds a different sort of
 insight on the back-propagation algorithm.
 
+\MoveNextFigure{-1cm}
 \Figure{nnet:dag}{DAG network}
 
 Suppose that your network structure is stored in some directed acyclic
@@ -536,6 +537,7 @@ computes derivatives of the edge weights for a given input.
 \RETURN all gradients $g_e$
 }
 
+\MoveNextFigure{-8cm}
 \Figure{nnet:forwardprop}{picture of forward prop}
 
 The key aspect of the \concept{forward-propagation} algorithm is to
@@ -675,6 +677,11 @@ units are computed as:
 h_i = \exp\left[ - \ga_i \norm{\vw_i - \vx}^2 \right]
 \end{equation}
 %
+\thinkaboutit{Consider an RBF network with one hidden unit per
+	training point, centered at that point.  What bad thing might happen
+	if you use back-propagation to estimate the $\ga$s and $\vec v$ on
+	this data if you're not careful?  How could you be careful?}
+
 \TODOFigure{nnet:rbfpicture}{a one-D picture of RBF bumps}
 \TODOFigure{nnet:unitsymbols}{picture of nnet with sigmoid/rbf units}
 %
@@ -687,7 +694,7 @@ $\vw_i$ have non-zero activations.  To distinguish sigmoid networks
 from RBF networks, the hidden units are typically drawn with sigmoids
 or with Gaussian bumps, as in Figure~\ref{fig:nnet:unitsymbols}.
 
-Training RBF networks involves finding good values for the Gassian
+Training RBF networks involves finding good values for the Gaussian
 widths, $\ga_i$, the centers of the Gaussian bumps, $\vw_i$ and the
 connections between the Gaussian bumps and the output unit, $\vec v$.
 This can all be done using back-propagation.  The gradient terms for
@@ -704,11 +711,6 @@ something that looks nearly identical to distance-weighted $K$NN by
 doing so.  This has the added advantage that you can go futher, and
 use back-propagation to \emph{learn} good Gaussian widths ($\ga$) and
 ``voting'' factors ($\vec v$) for the nearest neighbor algorithm.
-
-\thinkaboutit{Consider an RBF network with one hidden unit per
-  training point, centered at that point.  What bad thing might happen
-  if you use back-propagation to estimate the $\ga$s and $\vec v$ on
-  this data if you're not careful?  How could you be careful?}
 
 % If you use \emph{fewer} hidden units than data point, you can think
 % of this technique as a \concept{locally weighted linear model}.

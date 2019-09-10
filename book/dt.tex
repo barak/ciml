@@ -526,9 +526,9 @@ can compute our \concept{training error}, $\hat \ep$:
 
 That is, our training error is simply our \emph{average error} over
 the training data.  \thinkaboutit{Verify by calculation that we can
-  write our training error as $\Ep_{(\vx,y) \sim D} \big[ \ell(y,
-  f(\vx)) \big]$, by thinking of $D$ as a distribution that places
-  probability $1/N$ to each example in $D$ and probability $0$ on
+  write our training error as $\Ep_{(\vx,y) \sim \cD} \big[ \ell(y,
+  f(\vx)) \big]$, by thinking of $\cD$ as a distribution that places
+  probability $1/N$ on each example in $D$ and probability $0$ on
   everything else.}
 
 Of course, we can drive $\hat \ep$ to zero by simply memorizing our

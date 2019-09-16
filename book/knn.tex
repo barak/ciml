@@ -217,7 +217,7 @@ consider the \koncept{$K$-nearest neighbors}{K-nearest neighbors} and
 let them \concept{vote} on the correct class for this test point.  If
 you consider the $3$-nearest neighbors of the test point in
 Figure~\ref{fig:knn_classifyitbad}, you will see that two of them are
-negative and one is positive.  Through voting, positive would win.
+negative and one is positive.  Through voting, negative would win.
 
 \thinkaboutit{Why is it a good idea to use an odd number for $K$?}
 \thinkaboutit{Why is the sign of the sum computed in lines 7-10 the
@@ -256,7 +256,7 @@ have introduced five new conventions:
 \item These examples are pairs $(\vx_1,y_1), (\vx_2,y_2), \dots,
   (\vx_N,y_N)$.\\(Warning: do not confuse $\vx_n$, the $n$th training
   example, with $x_d$, the $d$th feature for example $\vx$.)
-\item We use \emptylist to denote an empty list and \pushlist{$\cdot$}
+\item We use \emptylist~to denote an empty list and \pushlist{$\cdot$}
   to append $\cdot$ to that list.
 \item Our prediction on $\hat\vx$ is called $\hat y$.
 \end{enumerate}
@@ -452,7 +452,7 @@ same as mine.
 The $K$-means clustering algorithm is a particularly simple and
 effective approach to producing clusters on data like you see in
 Figure~\ref{fig:knn:clustering}.  The idea is to represent each
-cluster by it's cluster center.  Given cluster centers, we can simply
+cluster by its cluster center.  Given cluster centers, we can simply
 assign each point to its nearest center.  Similarly, if we know the
 assignment of points to clusters, we can compute the centers.  This
 introduces a chicken-and-egg problem.  If we knew the clusters, we

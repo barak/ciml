@@ -13,7 +13,7 @@
 At the end of \chref{sec:dt}, you saw the ``Russian Tank'' example of a biased data set leading to a classifier that \emph{seemed} like it was doing well, but was really relying on some artifact of the data collection process.
 As machine learning algorithms have a greater and greater impact on the real world, it is crucially important to ensure that they are making decisions based on the ``right'' aspects of the input, rather than exploiting arbitrary idiosyncracies of a particular training set.
 
-For the rest of this chapter, we will consider two real world examples of bias issues that have had significant impact: the effect of gender in speech recognition systems and the effect of race in predicting criminal recidivism (i.e., will a convicted criminal commit further crimes if released).\footnote{See \href{http://www.autoblog.com/2011/05/31/women-voice-command-systems/}{Autoblog} and \href{http://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing}{ProPublica} for press coverage of these two issues.} The gender issue is that early speech recognition systems in cars failed to recognized the voices of many people who were not men. The race issue is that a specific recidivism predictor based on standard learning algorithms was biased against minorities.
+For the rest of this chapter, we will consider two real world examples of bias issues that have had significant impact: the effect of gender in speech recognition systems and the effect of race in predicting criminal recidivism (i.e., will a convicted criminal commit further crimes if released).\footnote{See \href{http://www.autoblog.com/2011/05/31/women-voice-command-systems/}{Autoblog} and \href{http://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing}{ProPublica} for press coverage of these two issues.} The gender issue is that early speech recognition systems in cars failed to recognize the voices of many people who were not men. The race issue is that a specific recidivism predictor based on standard learning algorithms was biased against minorities.
 
 \section{Train/Test Mismatch}
 
@@ -21,7 +21,7 @@ One of the most common issues in bias is a mismatch between the training distrib
 In the running example of speech recognition failing to work on many non-men speakers, a large part of this happened because most of the training data on which the speech recognition system was trained was spoken by men.
 The learning algorithm learned---very well---how to recognize men's speech, but its accuracy dropped significantly when faced with a different distribution of test data.
 
-To understand why this happens, recall the Bayes Optimal classifier from Chapter~\ref{sec:formal}. This was the classifier than magically know the data distribution $\cD$, and then when presented with an example $x$ predicted $\argmax_y \cD(x,y)$. This was optimal, but \emph{only} because $\cD$ was the correct distribution. Even if one has access to the true distribution for male speakers, say $\cD\xth{male}$, the Bayes Optimal classifier under $\cD\xth{male}$ will generally \emph{not} be optimal under the distribution for any other gender.
+To understand why this happens, recall the Bayes Optimal classifier from Chapter~\ref{sec:formal}. This was the classifier that magically knows the data distribution $\cD$, and then when presented with an example $x$ predicted $\argmax_y \cD(x,y)$. This was optimal, but \emph{only} because $\cD$ was the correct distribution. Even if one has access to the true distribution for male speakers, say $\cD\xth{male}$, the Bayes Optimal classifier under $\cD\xth{male}$ will generally \emph{not} be optimal under the distribution for any other gender.
 
 Another example occurs in sentiment analysis.
 It is common to train sentiment analysis systems on data collected from reviews: product reviews, restaurant reviews, movie reviews, etc.
@@ -92,7 +92,7 @@ In particular, we define:
 \end{align}
 ~
 That is, the probability of drawing some pair $(\vx,y)$ in the old distribution is proportional to the probability of first drawing that example according to the base distribution, and then the probability of selecting that particular example into the old distribution.
-If we can successfully estimate $p(s=1 \| \vx)$, then the ratio that we sought, then we can compute the importance ratio as:
+If we can successfully estimate $p(s=1 \| \vx)$, then we can compute the importance ratio as:
 ~
 \begin{align}
 \frac {\Dnew(\vx,y)} {\Dold(\vx,y)}
@@ -140,9 +140,9 @@ When the selection logistic regression is trained, it is likely to say ``old'' o
 
 \section{Supervised Adaptation}
 
-Unsupervised adaptation is very challenging because we never get to see try labels in the new distribution.
+Unsupervised adaptation is very challenging because we never get to see labels in the new distribution.
 In many ways, unsupervised adaptation attempts to \emph{guard against} bad things happening.
-That is, if an old distribution training example looks very unlike the new distribution, it (and consequently it's features) are downweighted so much as to be ignored.
+That is, if an old distribution training example looks very unlike the new distribution, it (and consequently its features) are downweighted so much as to be ignored.
 In supervised adaptation, we can hope for more: we can hope to actually do \emph{better} on the new distribution than the old because we have labeled data there.
 
 \newcommand{\vxold}{\vx^{\textcolor{darkgrey}{\textsf{(old)}}}}
@@ -193,11 +193,11 @@ Almost any data set in existence is biased in some way, in the sense that it cap
 The degree to which this bias is obvious can vary greatly:
 \begin{itemize}
 \item There might be obvious bias in the labeling. For instance, in criminology, learning to predict sentence lengths by predicting the sentences assigned by judges will simply learn to reproduce whatever bias already exists in judicial sentencing.
-\item There might be sample selection bias, as discussed early. In the same criminology example, the only people for which we have training data are those that have already been arrested, charged with and convicted of a crime; these processes are inherantly biased, and so any model learned on this data may exhibit similar biases.
+\item There might be sample selection bias, as discussed earlier. In the same criminology example, the only people for which we have training data are those that have already been arrested, charged with and convicted of a crime; these processes are inherantly biased, and so any model learned on this data may exhibit similar biases.
 \item The task itself might be biased because the designers had blindspots. An intelligent billboard that predicts the gender of the person walking toward it so as to show ``better'' advertisements may be trained as a binary classifier between male/female and thereby excludes anyone who does not fall in the gender binary. A similar example holds for a classifier that predicts political affiliation in the US as Democrat/Republican, when in fact there are far more possibilities.
 \item There might be bias in the features or model structure. Machine translation systems often exhibit incorrect gender stereotypes\footnote{For instance, many languages have verbal marking that agrees with the gender of the subject. In such cases, ``the doctor treats \dots'' puts masculine markers on the translation of ``treats'' but ``the nurse treats \dots'' uses feminine markers.} because the relevant context, which would tell them the correct gender, is not encoded in the feature representation. Alone, or coupled with biased data, this leads to errors.
 \item The loss function may favor certain types of errors over others. You've already seen such an example: using zero/one loss on a highly imbalanced class problem will often lead to a learned model that ignores the minority class entirely.
-\item A deployed system creates feedback loops when it begins to consume it's own output as new input. For instance, once a spam filter is in place, spammers will adjust their strategies, leading to distribution shift in the inputs. Or a car guidance system for predicting which roads are likely to be unoccupied may find those roads now occupied by other cars that it directed there.
+\item A deployed system creates feedback loops when it begins to consume its own output as new input. For instance, once a spam filter is in place, spammers will adjust their strategies, leading to distribution shift in the inputs. Or a car guidance system for predicting which roads are likely to be unoccupied may find those roads now occupied by other cars that it directed there.
 \end{itemize}
 These are all difficult questions, none of which has easy answers.
 Nonetheless, it's important to be aware of how our systems may fail, especially as they take over more and more of our lives.
@@ -266,7 +266,7 @@ Here, $\ab{\cdot}_{\text{Var}}$ is the \concept{total variation distance} (or \c
   = \frac 1 2 \int_\cX \ab{P(\vx) - Q(\vx)} \ud \vx
 \end{align}
 %
-Is a standard measure of dissimilarity between probability distributions. In particular, the variational distance is the largest difference in probability that $P$ and $Q$ assign to the same event (in this case, the event is an example $\vx$).
+which is a standard measure of dissimilarity between probability distributions. In particular, the variational distance is the largest difference in probability that $P$ and $Q$ assign to the same event (in this case, the event is an example $\vx$).
 
 The bound tells us that we might not be able to hope for very good error on the new distribution, even if we have very good error on the old distribution, when $\Dold$ and $\Dnew$ are very different (assign very different probabilities to the same event).
 Of course, this is an \emph{upper bound}, and possibly a very loose one.
@@ -283,7 +283,7 @@ If we want a way out of this dilemma, we need more technology.
 The core idea is that if we're learning a function $f$ from some hypothesis class $\cF$, and this hypothesis class isn't rich enough to peek at the 29th decimal digit of feature 1, then perhaps things are not as bad as they could be.
 This motivates the idea of looking at a measure of distance between probability distributions that \emph{depends on the hypothesis class}.
 A popular measure is the \concept{$d_\cA$-distance} or the \concept{discrepancy}.
-The discrepancy measure distances between probability distributions based on how much two functions $f$ and $f'$ in the hypothesis class can disagree on their labels.
+The discrepancy measures distances between probability distributions based on how much two functions $f$ and $f'$ in the hypothesis class can disagree on their labels.
 Let:
 %
 \begin{align}

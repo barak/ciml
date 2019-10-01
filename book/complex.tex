@@ -352,7 +352,7 @@ This is made explicit in the OVA error bound below.
   Multiple false positives can occur simultaneously.  Suppose there
   are $m$ false positives.  If there is simultaneously a false
   negative, the error is $1$.  In order for this to happen, there have
-  to be $m+1$ errors, so the efficiency is $1/(M+1)$.  In the case
+  to be $m+1$ errors, so the efficiency is $1/(m+1)$.  In the case
   that there is not a simultaneous false negative, the error
   probability is $m/(m+1)$.  This requires $m$ errors, leading to an
   efficiency of $1/(m+1)$.
@@ -498,7 +498,7 @@ Can you do better than $\ceil{\log_2 K}\ep$?  It turns out the answer
 is yes, but the algorithms to do so are relatively complicated.  You
 can actually do as well as $2\ep$ using the idea of error-correcting
 tournaments.  Moreover, you can prove a \emph{lower bound} that states
-that the best you could possible do is $\ep/2$.  This means that
+that the best you could possibly do is $\ep/2$.  This means that
 error-correcting tournaments are at most a factor of four worse than
 optimal.
 

@@ -424,7 +424,7 @@ convexity.  Without convexity, all is lost.
 The gradient descent algorithm is sketched in
 Algorithm~\ref{alg:loss:gd}.  The function takes as arguments the
 function $\cF$ to be minimized, the number of iterations $K$ to run
-and a sequence of learning rates $\eta_1, \dots, \eta_K$.  (This is to
+and a sequence of step sizes $\eta_1, \dots, \eta_K$.  (This is to
 address the case that you might want to start your mountain climbing
 taking large steps, but only take small steps when you are close to
 the peak.)
@@ -525,7 +525,7 @@ gradient descent will approach the optimal value at a fast
   cannot be right.  What is missing?}
 
 The proof of this theorem is a bit complicated because it makes heavy
-use of some linear algebra.  The key is to set the learning rate to
+use of some linear algebra.  The key is to set the step size to
 $1/L$, where $L$ is the maximum \concept{curvature} of the function
 that is being optimized.  The curvature is simply the ``size'' of the
 second derivative.  Functions with high curvature have gradients that

@@ -52,7 +52,7 @@ on a finite training set.
 The most direct way that you can attempt to construct such a
 probability distribution is to select a \emph{family} of parametric
 distributions.  For instance, a Gaussian (or Normal) distribution is
-parametric: it's parameters are its mean and covariance.  The job of
+parametric: its parameters are its mean and covariance.  The job of
 learning is then to infer which parameters are ``best'' as far as the
 observed training data is concerned, as well as whatever inductive
 bias you bring.  A key assumption that you will need to make is that
@@ -79,7 +79,7 @@ is a key assumption in almost all of machine learning.
   \concept{sum-to-one}: if you sum over all possible configurations of the world, $p$ sums to one: $\sum_e p(E=e) = 1$.\\
   \concept{marginalization}: you can sum out one random variable to remove it from the world: $\sum_a p(A=a, B=b) = p(B=b)$.\\
   \concept{chain rule}: if a world configuration consists of two or more random variables, you can evaluate the likelihood of the world one step at a time: $p(A=a, B=b) = p(A=a) p(B=b \| A=a)$. Events are unordered, so you can also get $p(A=a, B=b) = p(B=b) p(A=a \| B=b)$.\\
-  \concept{Bayes rule}: combining the two chain rule equalities and dividing, we can relate a conditional probability in one direction with that in the other direction: $p(A=a \| B=b) = p(A=a) p(B=b \| A=a) / p(B=b)$.
+  \concept{Bayes' rule}: combining the two chain rule equalities and dividing, we can relate a conditional probability in one direction with that in the other direction: $p(A=a \| B=b) = p(A=a) p(B=b \| A=a) / p(B=b)$.
 \end{mathreview}
 
 % Our underlying assumption for the majority of this book is that
@@ -716,7 +716,7 @@ The log-likelihood for this model is:
    \log p(D)
 &= \sum_n \Big[ [y_n=+1] \log \si\left(\dotp{\vw}{\vx_n} + b\right)\nonumber\\
 &\qquad
-               + [y_n=-1] \log \si\left(-\dotp{\vw}{\vx_n} + b\right)
+               + [y_n=-1] \log \si\left(-\dotp{\vw}{\vx_n} - b\right)
             \Big]
    \becauseof{model and properties of $\si$}\\
 &= \sum_n \log \si\left( y_n \left(\dotp{\vw}{\vx_n} + b\right)\right)
@@ -761,7 +761,7 @@ $\vw$ are more likely than large values, and choose to represent this
 as a Gaussian prior on each component of $\vw$.
 
 The \concept{maximum a posteriori} principle is a method for
-incoporating both data and prior beliefs to obtain a more balanced
+incorporating both data and prior beliefs to obtain a more balanced
 parameter estimate.  In abstract terms, consider a probabilistic model
 over data $D$ that is parameterized by parameters $\th$.  If you think
 of the parameters as just another random variable, then you can write

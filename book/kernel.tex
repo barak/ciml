@@ -49,14 +49,14 @@ expanded version denoted $\phi(\vx)$:
   \phi(\vx) = \langle &1, 2x_1, 2x_2, 2x_3, \dots, 2x_D, \nonumber\\
   & x_1^2, x_1 x_2, x_1 x_3, \dots, x_1 x_D, \nonumber\\
   & x_2 x_1, x_2^2, x_2 x_3, \dots, x_2 x_D, \nonumber\\
-  & x_3 x_1, x_3 x_2, x_3^2, \dots, x_2 x_D, \nonumber\\
+  & x_3 x_1, x_3 x_2, x_3^2, \dots, x_3 x_D, \nonumber\\
   & \dots, \nonumber\\
   & x_D x_1, x_D x_2, x_D x_3, \dots, x_D^2 \rangle
 \end{align}
 %
 (Note that there are repetitions here, but hopefully most learning
 algorithms can deal well with redundant features; in particular, the
-$2x_1$ terms are due to collapsing some repetitions.)
+$2x_n$ terms are due to collapsing some repetitions.)
 
 You could then train a classifier on this expanded feature space.
 There are two primary concerns in doing so.  The first is
@@ -210,7 +210,7 @@ is shown in Algorithm~\ref{alg:kernel:kperc}.
 \IF{\VAR{$y_n$}\VAR{$a$} $\leq \CON{0}$}
 \SETST{$\al_n$}{\VAR{$\al_n$} + \VAR{$y_n$}}
   \COMMENT{update coefficients}
-\SETST{$b$}{\VAR{$b$} + \VAR{$y$}}
+\SETST{$b$}{\VAR{$b$} + \VAR{$y_n$}}
   \COMMENT{update bias}
 \ENDIF
 \ENDFOR
@@ -597,7 +597,7 @@ The derivative with respect to $b$ is:
 \end{align}
 %
 This doesn't allow you to \emph{substitute} $b$ with something (as you
-did with $\vw$), but it does mean that the thirs term ($b \sum_n
+did with $\vw$), but it does mean that the third term ($b \sum_n
 \al_n y_n$) goes to zero at the optimum.
 
 The last of the original variables is $\xi_n$; the derivatives in this

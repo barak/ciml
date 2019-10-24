@@ -61,7 +61,7 @@ layers of \emph{trained} weights.)
 
 Prediction with a neural network is a straightforward generalization
 of prediction with a perceptron.  First you compute activations of the
-nodes in the hidden unit based on the inputs and the input weights.
+nodes in the hidden layer based on the inputs and the input weights.
 Then you compute activations of the output unit given the hidden unit
 activations and the second layer of weights.
 
@@ -82,7 +82,7 @@ vector of weights feeding in to node $i$.
 
 One example link function is the \concept{sign} function.  That is, if
 the incoming signal is negative, the activation is $-1$.  Otherwise
-the activation is $+1$.  This is a potentially useful activiation
+the activation is $+1$.  This is a potentially useful activation
 function, but you might already have guessed the problem with it: it
 is non-differentiable.
 
@@ -129,7 +129,7 @@ Where the second line is short hand assuming that $\tanh$ can take a
 vector as input and product a vector as output.
 
 \thinkaboutit{Is it necessary to use a link function at all?  What
-  would happen if you just used the identify function as a link?}
+  would happen if you just used the identity function as a link?}
 
 \TableSize{large}{nnet:xor}{Small XOR data set.}{r|rrr}{
   $y$ & $x_0$ & $x_1$ & $x_2$ \\
@@ -211,7 +211,7 @@ units.  If you only have a few examples, you should probably restrict
 the number of hidden units in your network.
 
 The number of units is both a form of inductive bias and a form of
-regularization.  In both view, the number of hidden units controls how
+regularization.  In both views, the number of hidden units controls how
 complex your function will be.  Lots of hidden units $\Rightarrow$
 very complicated function.  %Figure~\ref{fig:nnet:units} shows training
 %and test error for neural networks trained with different numbers of
@@ -368,7 +368,7 @@ gradients backward through the network, starting at the end.
 The complete instantiation of gradient descent for a two layer network
 with $K$ hidden units is sketched in
 Algorithm~\ref{alg:nnet:twolayertrain}.  Note that this really is
-\emph{exactly} a gradient descent algorithm; the only different is
+\emph{exactly} a gradient descent algorithm; the only difference is
 that the computation of the gradients of the input layer is moderately
 complicated.
 
@@ -611,7 +611,7 @@ constant depth.  The formal theorem is below:
 
 This is a very famous result because it shows that constant-depth
 circuits are less powerful than deep circuits.  Although a neural
-network isn't exactly the same as a circuit, the is generally believed
+network isn't exactly the same as a circuit, it is generally believed
 that the same result holds for neural networks.  At the very least,
 this gives a strong indication that depth might be an important
 consideration in neural networks.

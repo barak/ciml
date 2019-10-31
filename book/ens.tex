@@ -110,7 +110,7 @@ $N$ training examples.  From this single data set, you create $M$-many
 ``bootstrapped training sets'' $\tilde D_1, \dots \tilde D_M$.  Each
 of these bootstrapped sets also contains $N$ training examples, drawn
 randomly from $D$ with replacement.  You can then train a decision
-tree (or other model) seperately on each of these data sets to obtain
+tree (or other model) separately on each of these data sets to obtain
 classifiers $f_1, \dots, f_M$.  As before, you can use these
 classifiers to vote on new test points.
 
@@ -315,7 +315,7 @@ f(\vx)
 %
 You can notice that this is nothing but a two-layer \concept{neural
   network}, with $K$-many hidden units!  Of course it's not a
-classifically trained neural network (once you learn $\vw\kth$ you
+classically trained neural network (once you learn $\vw\kth$ you
 never go back and update it), but the structure is identical.
 
 \section{Random Ensembles}
@@ -349,7 +349,7 @@ a number $K$ of total decision trees to build.
 }
 
 The algorithm generates each of the $K$ trees independently, which
-makes it very easy to parallelize.  For each trees, it constructs a
+makes it very easy to parallelize.  For each tree, it constructs a
 full binary tree of depth \VAR{depth}.  The features used at the
 branches of this tree are selected randomly, typically \emph{with
   replacement}, meaning that the same feature can appear multiple

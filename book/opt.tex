@@ -24,7 +24,7 @@ basic approaches you have seen so far are insufficient to achieve such
 a massive scale.
 
 In this chapter, you will learn some techniques for scaling learning
-algorithms.  This are useful even when you do not have billions of
+algorithms.  This is useful even when you do not have billions of
 training examples, because it's always nice to have a program that
 runs quickly.  You will see techniques for speeding up both model
 training and model prediction.  The focus in this chapter is on linear
@@ -84,7 +84,7 @@ corresponds to picking some example (uniformly at random) from your
 data set.  Viewed this way, the optimization problem becomes a
 \concept{stochastic optimization} problem, because you are trying to
 optimize some function (say, a regularized linear classifier) over a
-probability distribution.  You can derive this intepretation directly
+probability distribution.  You can derive this interpretation directly
 as follows:
 %
 \begin{align}
@@ -236,11 +236,11 @@ Unfortunately, this does not quite work the way you might expect.  The
 issue is that the gradient might ``overstep'' zero and you will never
 end up with a solution that is particularly sparse.  For example, at
 the end of one gradient step, you might have $w_3 = 0.6$.  Your
-gradient might have $g_6 = 0.8$ and your gradient step (assuming
+gradient might have $g_3 = 0.8$ and your gradient step (assuming
 $\eta=1$) will update so that the new $w_3 = -0.2$.  In the subsequent
-iteration, you might have $g_6 = -0.3$ and step to $w_3 = 0.1$.
+iteration, you might have $g_3 = -0.3$ and step to $w_3 = 0.1$.
 
-This observation leads to the idea of \concept{trucated gradients}.
+This observation leads to the idea of \concept{truncated gradients}.
 The idea is simple: if you have a gradient that would step you over
 $w_d = 0$, then just set $w_d = 0$.  In the easy case when the
 learning rate is $1$, this means that if the \emph{sign} of $w_d -

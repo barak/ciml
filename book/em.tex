@@ -55,7 +55,7 @@ As a starting point, let's consider a simple heuristic and then complexify it.
 The heuristic is the ``majority vote'' heuristic and works as follows.
 First, we estimate $t_m$ as the most common answer for question $m$:
 $t_m = \argmax_t \sum_n \Ind[a_{n,m} = t]$.
-Once we have a guess for each true answer, we estimate each students' score as how many answers they produced that match this guessed key:
+Once we have a guess for each true answer, we estimate each student's score as how many answers they produced that match this guessed key:
 $s_n = \frac 1 M \sum_m \Ind[a_{n,m} = t_m]$.
 
 Once we have these scores, however, we might want to trust some of the students more than others.
@@ -80,8 +80,8 @@ The generative story we'll use is:
 \end{enumerate}
 ~
 In the first step, we generate the true answers independently by flipping a fair coin.
-In the second step, each students' overall score is determined to be a uniform random number between zero and one.
-The tricky step is step three, where each students' answer is generated for each question.
+In the second step, each student's overall score is determined to be a uniform random number between zero and one.
+The tricky step is step three, where each student's answer is generated for each question.
 Consider student $n$ answering question $m$, and suppose that $s_n = 0.9$.
 If $t_m = 1$, then $a_{n,m}$ should be 1 (i.e., correct) 90\% of the time;
 this can be accomplished by drawing the answer from $\Ber(0.9)$.

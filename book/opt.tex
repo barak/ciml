@@ -89,13 +89,13 @@ as follows:
 %
 \begin{align}
 \vw^*
-&= \arg\max_{\vw} \sum_n \ell(y_n, \dotp{\vw}{\vx_n}) + R(\vw)
+&= \arg\min_{\vw} \sum_n \ell(y_n, \dotp{\vw}{\vx_n}) + R(\vw)
 \becauseof{definition}\\
-&= \arg\max_{\vw} \sum_n \left[ \ell(y_n, \dotp{\vw}{\vx_n}) + \frac 1 N R(\vw) \right]
+&= \arg\min_{\vw} \sum_n \left[ \ell(y_n, \dotp{\vw}{\vx_n}) + \frac 1 N R(\vw) \right]
 \becauseof{move $R$ inside sum}\\
-&= \arg\max_{\vw} \sum_n \left[ \frac 1 N \ell(y_n, \dotp{\vw}{\vx_n}) + \frac 1 {N^2} R(\vw) \right]
+&= \arg\min_{\vw} \sum_n \left[ \frac 1 N \ell(y_n, \dotp{\vw}{\vx_n}) + \frac 1 {N^2} R(\vw) \right]
 \becauseof{divide through by $N$}\\
-&= \arg\max_{\vw} \Ep_{(y,\vx) \sim D} \left[ \ell(y, \dotp{\vw}{\vx}) + \frac 1 N R(\vw) \right]
+&= \arg\min_{\vw} \Ep_{(y,\vx) \sim D} \left[ \ell(y, \dotp{\vw}{\vx}) + \frac 1 N R(\vw) \right]
 \becauseof{write as expectation}\\
 & \text{where } D \text{ is the training data distribution}
 \end{align}

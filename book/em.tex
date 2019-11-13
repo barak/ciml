@@ -85,7 +85,7 @@ The tricky step is step three, where each student's answer is generated for each
 Consider student $n$ answering question $m$, and suppose that $s_n = 0.9$.
 If $t_m = 1$, then $a_{n,m}$ should be 1 (i.e., correct) 90\% of the time;
 this can be accomplished by drawing the answer from $\Ber(0.9)$.
-On the other hand, if $t_m = 0$, then $a_{n,m}$ should 1 (i.e., incorrect) 10\% of the time;
+On the other hand, if $t_m = 0$, then $a_{n,m}$ should be 1 (i.e., incorrect) 10\% of the time;
 this can be accomplished by drawing the answer from $\Ber(0.1)$.
 The exponent in step 3 selects which of two Bernoulli distributions to draw from, and then implements this rule.
 

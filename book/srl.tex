@@ -276,7 +276,7 @@ In particular, we're taking advantage of the associative law for addition:
   &= \sum_{l=1}^L \dotp{\vw}{\phi_l(\vx, \vy)} \becauseof{associative law}
 \end{align}
 %
-What this means is that we can build a graph like that in Figure~\ref{fig:srl:trellis}, with one vertical slice per time step ($l \ 1 \dots L$).\footnote{A graph of this sort is called a \concept{trellis}, and sometimes a \concept{lattice} in the literature.}
+What this means is that we can build a graph like that in Figure~\ref{fig:srl:trellis}, with one vertical slice per time step ($l \in 1 \dots L$).\footnote{A graph of this sort is called a \concept{trellis}, and sometimes a \concept{lattice} in the literature.}
 Each \emph{edge} in this graph will receive a weight, constructed in such a way that if you take a complete path through the lattice, and add up all the weights, this will correspond exactly to $\dotp{\vw}{\phi(\vx,\vy)}$.
 
 \FigureFull{srl:trellis}{A picture of a trellis sequence labeling. At each time step $l$ the corresponding word can have any of the three possible labels. Any path through this trellis corresponds to a unique labeling of this sentence. The gold standard path is drawn with bold red arrows. The highlighted edge corresponds to the edge between $l=2$ and $l=3$ for verb/adj as described in the text. That edge has weight $\dotp{\vw}{\phi_3(\vx, \dots \circ \text{verb} \circ \text{adj})}$.}
@@ -423,7 +423,7 @@ This is now in a form that we can optimize using subgradient descent (Chapter~\r
 
 In order to compute subgradients of Eq~\eqref{opt:srl:ssvmuc}, we need to be able to compute subgradients of the structured hinge loss.
 Mathematically this is straightforward.
-If the structured hinge loss on an example $(\vx,vy)$ is zero, then the gradient with respect to $\vw$ is also zero.
+If the structured hinge loss on an example $(\vx,\vy)$ is zero, then the gradient with respect to $\vw$ is also zero.
 If the structured hinge loss is positive, then the gradient is:
 \begin{align}
   &\grad_{\vw} \ell\xth{s-h}(\vy, \vx, \vw) \quad\text{\emph{if} the loss is $>0$}\\
@@ -497,7 +497,7 @@ In particular, if the structured loss function is Hamming loss, this is often st
 
 As a concrete example, let's consider loss-augmented argmax for sequences under Hamming loss.
 In comparison to the trellis problem solved in Section~\ref{sec:srl:dp}, the only difference is that we want to \emph{reward} paths that go through incorrect nodes in the trellis!
-In particular, in Figure~\ref{fig:srl_trellis}, all of the edges that are not part of the gold standard path---those that are thinner and grey---get a free ``$+1$'' added to their weights.
+In particular, in Figure~\ref{fig:srl:trellis}, all of the edges that are not part of the gold standard path---those that are thinner and grey---get a free ``$+1$'' added to their weights.
 Since Hamming loss adds one to the score for any word that's predicted incorrectly, this means that every edge in the trellis that leads to an \emph{incorrect} node (i.e., one that does not match the gold truth label) gets a ``$+1$'' added to its weight.
 
 Again, consider an edge in the trellis that goes from time $l-1$ to $l$, and transitions from $y$ to $y'$.
@@ -557,7 +557,7 @@ With a little thought, we arrive at:
 \begin{align}
 a_{l,k',k} &= \dotp{\vw}{\phi_l(\vx, \langle \dots, k', k\rangle)}
 \end{align}
-Finally, we need to construct constaints.
+Finally, we need to construct constraints.
 There are a few things that these constraints need to enforce:
 \begin{enumerate}
 \item That all the $z$s are binary. That's easy: just say $z_{l,k',k} \in \{0,1\}$, for all $l,k',k$.
@@ -591,7 +591,7 @@ More formally:
 \alpha_{l,k} &= \max_{\hat\vy_{1:l-1}} \dotp{\vw}{\phi_{1:l}(\vx, \hat\vy \circ k)}
 \end{align}
 Here, $\hat\vy$ is a sequence of length $l-1$, and $\hat\vy \circ k$ denotes the sequence of length $l$ obtained by adding $k$ onto the end.
-The max denotes the fact that we are seeking the \emph{best} possible prefix up to position $l-1$, and the forcing the label for position $l$ to be $k$.
+The max denotes the fact that we are seeking the \emph{best} possible prefix up to position $l-1$, and forcing the label for position $l$ to be $k$.
 
 Before working through the details, let's consider an example.
 Suppose that we've computing the $\alpha$s up to $l=2$, and have:
@@ -682,7 +682,7 @@ Putting this all together gives Algorithm~\ref{alg:srl:argmax}.
   }
 
 The main benefit of Algorithm~\ref{alg:srl:argmax} is that it is guaranteed to exactly compute the argmax output for sequences required in the structured perceptron algorithm, \emph{efficiently}.
-In particular, it's runtime is $O(LK^2)$, which is an exponential improvement on the naive $O(K^L)$ runtime if one were to enumerate every possible output sequence.
+In particular, its runtime is $O(LK^2)$, which is an exponential improvement on the naive $O(K^L)$ runtime if one were to enumerate every possible output sequence.
 The algorithm can be naturally extended to handle ``higher order'' Markov assumptions, where features depend on triples or quadruples of the output.
 The memoization becomes notationally cumbersome, but the algorithm remains essentially the same.
 In order to handle a length $M$ Markov features, the resulting algorithm will take $O(LK^M)$ time.

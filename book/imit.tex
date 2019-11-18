@@ -391,7 +391,7 @@ At any given time step, you are attempting to predict the label of the $t$th wor
 You define a feature vector $\phi(\vx,\hat\vy)$, which will typically consist of: (a) the $t$th word, (b) left and right neighbors of the $t$th word, (c) the last few predictions in $\hat\vy$, and (d) anything else you can think of.
 \emph{In particular,} the features are \emph{not} limited to Markov style features, because we're no longer trying to do dynamic programming.
 The expert label for the $t$th word is just the corresponding label in the ground truth $\vy$.
-Given all this, one can run Dagger (Algorithm~\ref{alg:imit:dldfs}) exactly as specified.
+Given all this, one can run Dagger (Algorithm~\ref{alg:imit:dagger}) exactly as specified.
 
 Moving to structured prediction problems other than sequence labeling problems is beyond the scope of this book.
 The general framework is to cast your structured prediction problem as a sequential decision making problem.

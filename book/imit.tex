@@ -34,7 +34,7 @@ The world then changes, moves to time step $t+1$, sensor readings $\vx_{t+1}$ ar
 The goal is to learn a function $f$ that maps from sensor readings $\vx_t$ to actions.
 Because of close connections to the field of \concept{reinforcement learning}, this function is typically called a \concept{policy}.
 The measure of success of a policy is: if we were to run this policy, how much total loss would be suffered.
-In particular, suppose that the \concept{trajectory} (denoted $\vec\tau$) of observation/action/reward triples encountered by your policy is:
+In particular, suppose that the \concept{trajectory} (denoted $\vec\tau$) of observation/action/loss triples encountered by your policy is:
 \begin{align}
   \vec\tau &=
   \vx_1~, \underbrace{a_1}_{=f(\vx_1)}, \ell_1~,~

@@ -513,7 +513,7 @@ computes derivatives of the edge weights for a given input.
 \FORALL{input nodes $u$}
 \SETST{$h_u$}{corresponding feature of $\vx$}
 \ENDFOR
-\FORALL{nodes $v$ in the network whose parent's are computed}
+\FORALL{nodes $v$ in the network whose parents are computed}
 \SETST{$a_v$}{$\sum_{u \in \textit{par}(v)} w_{(u,v)} h_u$}
 \SETST{$h_v$}{$\tanh(a_v)$}
 \ENDFOR

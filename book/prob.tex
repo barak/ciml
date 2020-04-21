@@ -425,11 +425,11 @@ inject your knowledge of the problem into the learning algorithm.
   The first is the Bernouilli distribution, which models binary outcomes (like coin flips).
   A Bernouilli distribution, $\Ber(\th)$ is parameterized by a single scalar value $\th \in [0,1]$ that represents the probability of heads. The likelihood function is $\Ber(x \| \th) = \th^x (1-\th)^{1-x}$.
   The generalization of the Bernouilli to more than two possible outcomes (like rolls of a die) is the Discrete distribution, $\Disc(\vec \th)$. If the die has $K$ sides, then $\vec \th \in \R^K$ with all entries non-negative and $\sum_k \th_k = 1$. $\th_k$ is the probabability that the die comes up on side $k$. The likelihood function is $\Disc(x \| \vec\th) = \prod_k \th_k^{\Ind[x=k]}$.
-  The Binomial distribution is just like the Bernouilli distribution but for multiple flips of the rather than a single flip; its likelihood is $\Bin(k \| n, \th) = n \choose k \th^k (1-\th)^{n-k}$, where $n$ is the number of flips and $k$ is the number of heads.
-  The Multinomial distribution extends the Discrete distribution also to multiple rolls; it's likelihood is $\Mult(\vec x \| n, \vec\th) = \frac {n!} {\prod_k x_k!} \prod_k \th_k^{x_k}$, where $n$ is the total number of rolls and $x_k$ is the number of times the die came up on side $k$ (so $\sum_k x_k = n$).
+  The Binomial distribution is just like the Bernouilli distribution but for multiple flips of the coin rather than a single flip; its likelihood is $\Bin(k \| n, \th) = n \choose k \th^k (1-\th)^{n-k}$, where $n$ is the number of flips and $k$ is the number of heads.
+  The Multinomial distribution extends the Discrete distribution also to multiple rolls; its likelihood is $\Mult(\vec x \| n, \vec\th) = \frac {n!} {\prod_k x_k!} \prod_k \th_k^{x_k}$, where $n$ is the total number of rolls and $x_k$ is the number of times the die came up on side $k$ (so $\sum_k x_k = n$).
   The preceding distributions are all discrete.
   ~\\~\\
-  There are two common continuous distributions we need. The first is the Uniform distribution, $\Uni(a,b)$ which is uniform over the closed range $[a,b]$. It's density function is $\Uni(x \| a,b) = \frac 1 {b-a} \Ind[x \in [a,b]]$.
+  There are two common continuous distributions we need. The first is the Uniform distribution, $\Uni(a,b)$ which is uniform over the closed range $[a,b]$. Its density function is $\Uni(x \| a,b) = \frac 1 {b-a} \Ind[x \in [a,b]]$.
   Finally, the Gaussian distribution is parameterized by a mean $\mu$ and variance $\si^2$ and has density $\Nor(x \| \mu,\si^2) = (2 \pi \si^2)^{-\frac 1 2} \exp\left[ - \frac 1 {2 \si^2} (x-\mu)^2\right]$.
 \end{mathreview}
 
@@ -671,7 +671,7 @@ story, you obtain:
 \end{align}
 %
 This is precisely the linear regression model you encountered in
-Section~\ref{sec:loss:reg}!  To minimizing the \emph{negative} log
+Section~\ref{sec:loss:reg}!  To minimize the \emph{negative} log
 probability, you need only solve for the regression coefficients
 $\vw,b$ as before.
 
@@ -731,7 +731,7 @@ The log-likelihood for this model is:
 As you can see, the log-likelihood is \emph{precisely} the negative of
 (a scaled version of) the logistic loss from Chapter~\ref{sec:loss}.
 This model is the \concept{logistic regression} model, and this is
-where logisitic loss originally derived from.
+where logistic loss originally derived from.
 
 %One key question is: when should one prefer conditional models to
 %joint model

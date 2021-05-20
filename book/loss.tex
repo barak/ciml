@@ -680,7 +680,7 @@ $2$-norm regularizer).
 If $\vec v$ is a vector in $\R^D$, we will treat is as a \emph{column vector}, or a matrix of size $D \times 1$.
 Thus, $\mat A \vec v$ is well defined if $\mat A$ is $D \times M$, and the resulting product is a vector $\vec u$ with $u_m = \sum_d \mat A_{d,m} v_d$.
   ~\\~\\
-  Aside from matrix product, a fundamental matrix operation is inversion. We will often encounter a form like $\mat A \vec x = \vec y$, where $\mat A$ and $\vec y$ are known and we want to solve for $\mat A$.
+  Aside from matrix product, a fundamental matrix operation is inversion. We will often encounter a form like $\mat A \vec x = \vec y$, where $\mat A$ and $\vec y$ are known and we want to solve for $\vec x$.
   If $\mat A$ is square of size $N \times N$, then the inverse of $\mat A$, denoted $\mat A\inv$, is also a square matrix of size $N \times N$, such that $\mat A \mat A\inv = \eye_N = \mat A\inv \mat A$. I.e., multiplying a matrix by its inverse (on either side) gives back the identity matrix.
   Using this, we can solve $\mat A \vec x = \vec y$ by multiplying both sides by $\mat A\inv$ on the left (recall that order matters in matrix multiplication), yielding $\mat A\inv \mat A \vec x = \mat A\inv \vec y$ from which we can conclude $\vec x = \mat A\inv\vec y$.
   Note that not all square matrices are invertible. For instance, the all zeros matrix does not have an inverse (in the same way that $1/0$ is not defined for scalars).

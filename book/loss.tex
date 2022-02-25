@@ -693,9 +693,8 @@ $2$-norm regularizer and squared error loss function.  For this, you
 can actually obtain a \emph{closed form} solution for the optimal
 weights.  However, to obtain this, you need to rewrite the
 optimization problem in terms of matrix operations.  For simplicity,
-we will only consider the \emph{unbiased} version, but the extension
-is Exercise~\ref{}.  This is precisely the \concept{linear regression}
-setting.
+we will only consider the \emph{unbiased} version.
+This is precisely the \concept{linear regression} setting.
 
 You can think of the training data as a large matrix $\mat X$ of size
 $N \times D$, where $X_{n,d}$ is the value of the $d$th feature on the
@@ -902,7 +901,7 @@ The ``odd'' thing about this optimization problem is that we require
 the classification of each point to be greater than \emph{one} rather
 than simply greater than \emph{zero}.  However, the problem doesn't
 fundamentally change if you replace the ``1'' with any other positive
-constant (see Exercise~\ref{}).  As shown in
+constant.  As shown in
 Figure~\ref{fig:loss:margin}, the constant one can be interpreted
 visually as ensuring that there is a non-trivial margin between the
 positive points and negative points.

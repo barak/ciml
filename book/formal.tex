@@ -510,14 +510,15 @@ In this sequence, (1) we have some real world goal like increasing revenue for o
   \begin{marginfigure}[\NextFigureOffset]
     \begin{centering}
       %\includegraphics[width=1.5\textwidth]{figs/formal_deployml}
-      \taburulecolor{darkblue}
-      \tabulinestyle{1pt}
-      \everyrow{\hline}
+      %\taburulecolor{darkblue}
+      %\tabulinestyle{1pt}
+      %\everyrow{\hline}
       \renewcommand{\arraystretch}{1.5}
       \hyphenpenalty=10000
       \exhyphenpenalty=10000
-      \tabulinesep=2pt
-      \begin{tabu}{|@{ }m{4mm}@{~~ }y@{~~~~}|@{}z|}
+      %\tabulinesep=2pt
+      \begin{tabular}{|@{ }m{4mm}@{~~ }y@{~~~~}|@{}z|}
+        \hline
         1 & real world ~~~goal     & increase revenue        \\
         2 & real world mechanism& better ad display       \\
         3 & learning problem    & classify click-through  \\
@@ -530,7 +531,8 @@ In this sequence, (1) we have some real world goal like increasing revenue for o
        10 & predict on test data& subset from may'16      \\
        11 & evaluate error      & zero/one loss for $\pm$ click     \\
        12 & deploy! & (hope we achieve our goal)\\
-      \end{tabu}
+       \hline
+     \end{tabular}
       \caption{A typical design process for a machine learning application.}
     \label{fig:formal_deployml}
     \end{centering}

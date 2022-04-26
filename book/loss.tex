@@ -492,7 +492,7 @@ perceptron update!  Note that $c$ is large for very poorly classified
 points and small for relatively well classified points.
 
 By looking at the part of the gradient related to the regularizer, the
-update says: $\vw \leftarrow \vw - \la \vw = (1-\la) \vw$.  This has
+update says: $\vw \leftarrow \vw - \eta \la \vw = (1- \eta \la) \vw$.  This has
 the effect of \emph{shrinking} the weights toward zero.  This is
 exactly what we expect the regularizer to be doing!
 

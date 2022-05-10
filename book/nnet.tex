@@ -153,17 +153,18 @@ units.  The key idea is to make the first hidden unit compute an
 an ``and'' function: $x_1 \land x_2$.  The the output can combine
 these into a single prediction that mimics XOR.  Once you have the
 first hidden unit activate for ``or'' and the second for ``and,'' you
-need only set the output weights as $-2$ and $+1$, respectively.
+need only set the output weights as $+1$ and $-2$, respectively, and
+the output bias to $-2$.
 
 \thinkaboutit{Verify that these output weights will actually give you XOR.}
 
 To achieve the ``or'' behavior, you can start by setting the bias to
-$-0.5$ and the weights for the two ``real'' features as both being
+$0.5$ and the weights for the two ``real'' features as both being
 $1$.  You can check for yourself that this will do the ``right thing''
 if the link function were the sign function.  Of course it's not, it's
 $\tanh$.  To get $\tanh$ to mimic $\sign$, you need to make the dot
 product either really really large or really really small.  You can
-accomplish this by setting the bias to $-500,000$ and both of the two
+accomplish this by setting the bias to $500,000$ and both of the two
 weights to $1,000,000$.  Now, the activation of this unit will be just
 slightly above $-1$ for $\vx = \langle -1,-1 \rangle$ and just
 slightly below $+1$ for the other three examples.

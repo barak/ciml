@@ -83,7 +83,7 @@ problem.
 \learningproblem{Binary Classification}{
 \item An input space $\cX$
 \item An unknown distribution $\cD$ over $\cX \times \{ -1, +1 \}$
-\item A training set $D$ sampled from $\cD$
+\item A training set $\mat D$ sampled from $\cD$
 }{A function $f$ minimizing: $\Ep_{(\vx,y) \sim \cD} \big[ f(\vx) \neq y \big]$}
 
 As in all the binary classification examples you've seen, you have
@@ -100,7 +100,7 @@ $\al$-times as important as the negative class.
 \learningproblem{$\al$-Weighted Binary Classification}{
 \item An input space $\cX$
 \item An unknown distribution $\cD$ over $\cX \times \{ -1, +1 \}$
-\item A training set $D$ sampled from $\cD$
+\item A training set $\mat D$ sampled from $\cD$
 }{A function $f$ minimizing: $\Ep_{(\vx,y) \sim \cD} \Big[ \al^{y=1} \big[f(\vx) \neq y\big] \Big]$}
 
 The objects given to you in weighted binary classification are
@@ -261,7 +261,7 @@ classes to choose from.
 \learningproblem{Multiclass Classification}{
 \item An input space $\cX$ and number of classes $K$
 \item An unknown distribution $\cD$ over $\cX \times [K]$
-\item A training set $D$ sampled from $\cD$
+\item A training set $\mat D$ sampled from $\cD$
 }{A function $f$ minimizing: $\Ep_{(\vx,y) \sim \cD} \big[f(\vx) \neq y\big]$}
 
 Note that this is \emph{identical} to binary classification, except
@@ -314,8 +314,8 @@ In the testing procedure, the prediction of the $i$th classifier is
 added to the overall score for class $i$.  Thus, if the prediction is
 positive, class $i$ gets a vote; if the prediction is negative,
 everyone else (implicitly) gets a vote.  (In fact, if your learning
-algorithm can output a confidence, as discussed in Section~\ref{}, you
-can often do better by using the confidence as $y$, rather than a
+algorithm can output a confidence, as discussed in Section~\ref{sec:modeleval},
+you can often do better by using the confidence as $y$, rather than a
 simple $\pm1$.)
 
 \thinkaboutit{Why would using a confidence help?}
@@ -352,7 +352,7 @@ This is made explicit in the OVA error bound below.
   Multiple false positives can occur simultaneously.  Suppose there
   are $m$ false positives.  If there is simultaneously a false
   negative, the error is $1$.  In order for this to happen, there have
-  to be $m+1$ errors, so the efficiency is $1/(M+1)$.  In the case
+  to be $m+1$ errors, so the efficiency is $1/(m+1)$.  In the case
   that there is not a simultaneous false negative, the error
   probability is $m/(m+1)$.  This requires $m$ errors, leading to an
   efficiency of $1/(m+1)$.
@@ -498,7 +498,7 @@ Can you do better than $\ceil{\log_2 K}\ep$?  It turns out the answer
 is yes, but the algorithms to do so are relatively complicated.  You
 can actually do as well as $2\ep$ using the idea of error-correcting
 tournaments.  Moreover, you can prove a \emph{lower bound} that states
-that the best you could possible do is $\ep/2$.  This means that
+that the best you could possibly do is $\ep/2$.  This means that
 error-correcting tournaments are at most a factor of four worse than
 optimal.
 
@@ -625,7 +625,7 @@ definitions, we can properly define the ranking problem.
 \learningproblem{$\om$-Ranking}{
 \item An input space $\cX$
 \item An unknown distribution $\cD$ over $\cX \times \Si_M$
-\item A training set $D$ sampled from $\cD$
+\item A training set $\mat D$ sampled from $\cD$
 }{A function $f : \cX \fto \Si_M$ minimizing:
 \begin{equation} \label{eq:complex:rank}
   \Ep_{(\vx,\si) \sim \cD} \left[

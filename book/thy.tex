@@ -148,7 +148,7 @@ time.
 formalism of inductive learning based on the realization that the best
 we can hope of an algorithm is that it does a good job (i.e., is
 approximately correct), most of the time (i.e., it is \emph{probably}
-appoximately correct).\sidenote{Leslie Valiant invented the notion of
+approximately correct).\sidenote{Leslie Valiant invented the notion of
   PAC learning in 1984.  In 2011, he received the Turing Award, the
   highest honor in computing for his work in learning theory,
   computational complexity and parallel systems.}
@@ -300,7 +300,7 @@ of the data set.
 However, in order to be an efficient $(\ep,\de)$-PAC learning
 algorithm, you need to be able to get a bound on the \concept{sample
   complexity} of this algorithm.  Sure, you know that its run time is
-linear in the number of example $N$.  But \emph{how many} examples $N$
+linear in the number of examples $N$.  But \emph{how many} examples $N$
 do you need to see in order to guarantee that it achieves an error
 rate of at most $\ep$ (in all but $\de$-many cases)?  Perhaps $N$ has
 to be gigantic (like $2^{2^{D/\ep}}$) to (probably) guarantee a small
@@ -347,7 +347,7 @@ For a term $t$
   has an error rate at most $\ep$.
 
 We know that $f$ contains \emph{at
-    most} $2D$ terms, since is begins with $2D$ terms and throws them
+    most} $2D$ terms, since it begins with $2D$ terms and throws them
   out.
 
   The algorithm begins with $2D$ terms (one for each variable and one
@@ -456,7 +456,7 @@ choices here.  This gives $D 2^{D-1}$ trees.  The last thing is that
 there are $2^D$ leaves of the tree, each of which can take two
 possible values, depending on whether this leaf is classified as $+1$
 or $-1$: this is $2 \times 2^D = 2^{D+1}$ possibilities.  Putting this
-all togeter gives a total number of trees $\card{\cH} = D 2^{D-1}
+all together gives a total number of trees $\card{\cH} = D 2^{D-1}
 2^{D+1} = D 2^{2D} = D 4^D$.  Applying Occam's Bound, we see that
 $TODO$ examples is enough to learn a decision tree!
 

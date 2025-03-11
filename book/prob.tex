@@ -44,7 +44,7 @@ Recall from Chapter~\ref{sec:formal} that if we had access to the underlying pro
 Unfortunately, no one gave you this distribution, but the optimality of this approach
 suggests that good way to build a classifier is to try to
 \emph{estimate} $\cD$.  In other words, you try to learn a
-distribution $\hat \cD$, which you hope to very similar to $\cD$, and
+distribution $\hat \cD$, which you hope to be very similar to $\cD$, and
 then use this distribution for classification.  Just as in the
 preceding chapters, you can try to form your estimate of $\cD$ based
 on a finite training set.
@@ -52,7 +52,7 @@ on a finite training set.
 The most direct way that you can attempt to construct such a
 probability distribution is to select a \emph{family} of parametric
 distributions.  For instance, a Gaussian (or Normal) distribution is
-parametric: it's parameters are its mean and covariance.  The job of
+parametric: its parameters are its mean and covariance.  The job of
 learning is then to infer which parameters are ``best'' as far as the
 observed training data is concerned, as well as whatever inductive
 bias you bring.  A key assumption that you will need to make is that
@@ -79,7 +79,7 @@ is a key assumption in almost all of machine learning.
   \concept{sum-to-one}: if you sum over all possible configurations of the world, $p$ sums to one: $\sum_e p(E=e) = 1$.\\
   \concept{marginalization}: you can sum out one random variable to remove it from the world: $\sum_a p(A=a, B=b) = p(B=b)$.\\
   \concept{chain rule}: if a world configuration consists of two or more random variables, you can evaluate the likelihood of the world one step at a time: $p(A=a, B=b) = p(A=a) p(B=b \| A=a)$. Events are unordered, so you can also get $p(A=a, B=b) = p(B=b) p(A=a \| B=b)$.\\
-  \concept{Bayes rule}: combining the two chain rule equalities and dividing, we can relate a conditional probability in one direction with that in the other direction: $p(A=a \| B=b) = p(A=a) p(B=b \| A=a) / p(B=b)$.
+  \concept{Bayes' rule}: combining the two chain rule equalities and dividing, we can relate a conditional probability in one direction with that in the other direction: $p(A=a \| B=b) = p(A=a) p(B=b \| A=a) / p(B=b)$.
 \end{mathreview}
 
 % Our underlying assumption for the majority of this book is that
@@ -176,7 +176,7 @@ tails).  Thus, the parameter of your model is simply the scalar $\be$.
   we are making about the coin flip is false.}
 
 The most basic computation you might perform is \concept{maximum
-  likelihood estimation}: namely, select the paramter $\be$ the
+  likelihood estimation}: namely, select the parameter $\be$ the
 maximizes the probability of the data under that parameter.  In order
 to do so, you need to compute the probability of the data:
 %
@@ -255,7 +255,7 @@ optimization problem is:
 {\textcolor{darkergreen}{\sum_k \th_k - 1 = 0}}
 %
 The Lagrange multiplier approach involves adding a new variable $\la$
-to the problem (called the \concept{Lagrange variable}) corresponding
+to the problem (called the \concept{Lagrange multiplier}) corresponding
 to the constraint, and to use that to move the constraint into the
 objective.  The result, in this case, is:
 %
@@ -263,7 +263,7 @@ objective.  The result, in this case, is:
   \textcolor{darkblue}{- \sum_k x_k \log \th_k} - \la \textcolor{darkergreen}{\left( \sum_k \th_k - 1 \right)}
 }
 %
-Turning a constrained optimization problem into it's corresponding
+Turning a constrained optimization problem into its corresponding
 \concept{Lagrangian} is straightforward.  The mystical aspect is why
 it works.  In this case, the idea is as follows.  Think of $\la$ as an
 adversary: $\la$ is trying to maximize this function (you're trying to
@@ -411,7 +411,7 @@ each of the $2D$ coins independently.  This yields:
 %
 In the case that the features are \emph{not} binary, you need to
 choose a different model for $p(x_d \| y)$.  The model we chose here
-is the \concept{Bernouilli distribution}, which is effectively a
+is the \concept{Bernoulli distribution}, which is effectively a
 distribution over independent coin flips.  For other types of data,
 other distributions become more appropriate.  The die example from
 before corresponds to a \concept{discrete distribution}.  If the data
@@ -422,14 +422,14 @@ inject your knowledge of the problem into the learning algorithm.
 
 \begin{mathreview}{Common probability distributions}
   There are a few common probability distributions that we use in this book.
-  The first is the Bernouilli distribution, which models binary outcomes (like coin flips).
-  A Bernouilli distribution, $\Ber(\th)$ is parameterized by a single scalar value $\th \in [0,1]$ that represents the probability of heads. The likelihood function is $\Ber(x \| \th) = \th^x (1-\th)^{1-x}$.
-  The generalization of the Bernouilli to more than two possible outcomes (like rolls of a die) is the Discrete distribution, $\Disc(\vec \th)$. If the die has $K$ sides, then $\vec \th \in \R^K$ with all entries non-negative and $\sum_k \th_k = 1$. $\th_k$ is the probabability that the die comes up on side $k$. The likelihood function is $\Disc(x \| \vec\th) = \prod_k \th_k^{\Ind[x=k]}$.
-  The Binomial distribution is just like the Bernouilli distribution but for multiple flips of the rather than a single flip; its likelihood is $\Bin(k \| n, \th) = n \choose k \th^k (1-\th)^{n-k}$, where $n$ is the number of flips and $k$ is the number of heads.
-  The Multinomial distribution extends the Discrete distribution also to multiple rolls; it's likelihood is $\Mult(\vec x \| n, \vec\th) = \frac {n!} {\prod_k x_k!} \prod_k \th_k^{x_k}$, where $n$ is the total number of rolls and $x_k$ is the number of times the die came up on side $k$ (so $\sum_k x_k = n$).
+  The first is the Bernoulli distribution, which models binary outcomes (like coin flips).
+  A Bernoulli distribution, $\Ber(\th)$ is parameterized by a single scalar value $\th \in [0,1]$ that represents the probability of heads. The likelihood function is $\Ber(x \| \th) = \th^x (1-\th)^{1-x}$.
+  The generalization of the Bernoulli to more than two possible outcomes (like rolls of a die) is the Discrete distribution, $\Disc(\vec \th)$. If the die has $K$ sides, then $\vec \th \in \R^K$ with all entries non-negative and $\sum_k \th_k = 1$. $\th_k$ is the probabability that the die comes up on side $k$. The likelihood function is $\Disc(x \| \vec\th) = \prod_k \th_k^{\Ind[x=k]}$.
+  The Binomial distribution is just like the Bernoulli distribution but for multiple flips of the coin rather than a single flip; its likelihood is $\Bin(k \| n, \th) = n \choose k \th^k (1-\th)^{n-k}$, where $n$ is the number of flips and $k$ is the number of heads.
+  The Multinomial distribution extends the Discrete distribution also to multiple rolls; its likelihood is $\Mult(\vec x \| n, \vec\th) = \frac {n!} {\prod_k x_k!} \prod_k \th_k^{x_k}$, where $n$ is the total number of rolls and $x_k$ is the number of times the die came up on side $k$ (so $\sum_k x_k = n$).
   The preceding distributions are all discrete.
   ~\\~\\
-  There are two common continuous distributions we need. The first is the Uniform distribution, $\Uni(a,b)$ which is uniform over the closed range $[a,b]$. It's density function is $\Uni(x \| a,b) = \frac 1 {b-a} \Ind[x \in [a,b]]$.
+  There are two common continuous distributions we need. The first is the Uniform distribution, $\Uni(a,b)$ which is uniform over the closed range $[a,b]$. Its density function is $\Uni(x \| a,b) = \frac 1 {b-a} \Ind[x \in [a,b]]$.
   Finally, the Gaussian distribution is parameterized by a mean $\mu$ and variance $\si^2$ and has density $\Nor(x \| \mu,\si^2) = (2 \pi \si^2)^{-\frac 1 2} \exp\left[ - \frac 1 {2 \si^2} (x-\mu)^2\right]$.
 \end{mathreview}
 
@@ -474,7 +474,7 @@ b   = \sum_d \log \frac {1-\th_{(+1),d}} {1-\th_{(-1),d}}
 %
 The result of the algebra is that the naive Bayes model has precisely
 the form of a linear model!  Thus, like perceptron and many of the
-other models you've previous studied, the decision boundary is linear.
+other models you've previously studied, the decision boundary is linear.
 
 % One advantage to working with probabilistic models is that the
 % \emph{same} model can be used to predict under a variety of loss
@@ -671,7 +671,7 @@ story, you obtain:
 \end{align}
 %
 This is precisely the linear regression model you encountered in
-Section~\ref{sec:loss:reg}!  To minimizing the \emph{negative} log
+Section~\ref{sec:loss:reg}!  To minimize the \emph{negative} log
 probability, you need only solve for the regression coefficients
 $\vw,b$ as before.
 
@@ -716,7 +716,7 @@ The log-likelihood for this model is:
    \log p(D)
 &= \sum_n \Big[ [y_n=+1] \log \si\left(\dotp{\vw}{\vx_n} + b\right)\nonumber\\
 &\qquad
-               + [y_n=-1] \log \si\left(-\dotp{\vw}{\vx_n} + b\right)
+               + [y_n=-1] \log \si\left(-\dotp{\vw}{\vx_n} - b\right)
             \Big]
    \becauseof{model and properties of $\si$}\\
 &= \sum_n \log \si\left( y_n \left(\dotp{\vw}{\vx_n} + b\right)\right)
@@ -731,7 +731,7 @@ The log-likelihood for this model is:
 As you can see, the log-likelihood is \emph{precisely} the negative of
 (a scaled version of) the logistic loss from Chapter~\ref{sec:loss}.
 This model is the \concept{logistic regression} model, and this is
-where logisitic loss originally derived from.
+where logistic loss originally derived from.
 
 %One key question is: when should one prefer conditional models to
 %joint model
@@ -761,13 +761,13 @@ $\vw$ are more likely than large values, and choose to represent this
 as a Gaussian prior on each component of $\vw$.
 
 The \concept{maximum a posteriori} principle is a method for
-incoporating both data and prior beliefs to obtain a more balanced
+incorporating both data and prior beliefs to obtain a more balanced
 parameter estimate.  In abstract terms, consider a probabilistic model
 over data $D$ that is parameterized by parameters $\th$.  If you think
 of the parameters as just another random variable, then you can write
 this model as $p(D \| \th)$, and maximum likelihood amounts to
 choosing $\th$ to maximize $p(D \| \th)$.  However, you might instead
-with to maximize the probability of the \emph{parameters}, given the
+wish to maximize the probability of the \emph{parameters}, given the
 data.  Namely, maximize $p(\th \| D)$.  This term is known as the
 \concept{posterior} distribution on $\th$, and can be computed by
 Bayes' rule:

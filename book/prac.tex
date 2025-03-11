@@ -115,7 +115,7 @@ which?
 \section{Irrelevant and Redundant Features}
 
 One big difference between learning models is how robust they are to
-the addition of noisy or irrelevant features.  Intuitively, an
+the addition of noisy or \concept{irrelevant features}.  Intuitively, an
 irrelevant feature is one that is completely uncorrelated with the
 prediction task.  A feature $f$ whose expectation does not depend on
 the label $\Ep[f \| Y] = \Ep[f]$ might be irrelevant.  For instance,
@@ -157,8 +157,8 @@ that the model will be able to throw away irrelevant features.
 Redundant features are almost certainly thrown out: once you select
 one feature, the second feature now looks mostly useless.  The only
 possible issue with irrelevant features is that even though they're
-irrelevant, they \emph{happen to} correlate with the class label on
-the training data, but chance.
+irrelevant, they might \emph{happen to} correlate with the class label on
+the training data, but by chance.
 
 As a thought experiment, suppose that we have $N$ training examples,
 and exactly half are positive examples and half are negative
@@ -256,7 +256,7 @@ appears in pretty much every English document ever written.)  Typical
 choices for $K$ are $1, 2, 5, 10, 20, 50$, mostly depending on the
 size of the data.  On a text data set with $1000$ documents, a cutoff
 of $5$ is probably reasonable.  On a text data set the size of the
-web, a cut of $50$ or even $100$ or $200$ is probably
+web, a cutoff of $50$ or even $100$ or $200$ is probably
 reasonable\sidenote{According to Google, the following words (among
   many others) appear $200$ times on the web: moudlings, agaggagctg,
   setgravity, rogov, prosomeric, spunlaid, piyushtwok, telelesson,
@@ -285,7 +285,7 @@ words and performance suffers.
     $\frac \partial {\partial a} \frac 1 2 \sum_n (a - z_n)^2
      = \sum_n (a - z_n) = N a - \sum_n z_n$; therefore $N a = \sum_n z_n$ and $a = \mu$.
   This means that the sample mean is the number that minimizes squared error to the sample.
-  Moreover, the variance is propotional to the squared error of that ``predictor.''
+  Moreover, the variance is proportional to the squared error of that ``predictor.''
 \end{mathreview}
 
 \TODOFigure{prac:variance}{effect of pruning on vision}
@@ -483,6 +483,7 @@ actually $x_d \mapsto \log_2(x_d + 1)$ to ensure that zeros remain
 zero and sparsity is retained. In the case that feature values can also be negative, the slightly more complex mapping $x_d \mapsto \log_2(\ab{x_d}+1) \sign(x_d)$, where $\sign(x_d)$ denotes the sign of $x_d$.
 
 \section{Evaluating Model Performance}
+\label{sec:modeleval}
 
 So far, our focus has been on classifiers that achieve \emph{high
   accuracy}.  In some cases, this is not what you might want.  For
@@ -596,16 +597,16 @@ parameterized by a weight $\be \in [0,\infty)$ (beta):
 F_\be = \frac {(1 + \be^2) \times P \times R} {\be^2 \times P + R}
 \end{equation}
 For $\be=1$, this reduces to the standard f-measure.  For $\be = 0$, it
-focuses entirely on recall and for $\be \rightarrow \infty$ it focuses
-entirely on precision.  The interpretation of the weight is that
+focuses entirely on precision and for $\be \rightarrow \infty$ it focuses
+entirely on recall.  The interpretation of the weight is that
 $F_\be$ measures the performance for a user who cares $\be$ times as
-much about precision as about recall.
+much about recall as about precision.
 
 One thing to keep in mind is that precision and recall (and hence
 f-measure) depend crucially on which class is considered the thing you
-wish to find.  In particular, if you take a binary data set if flip
+wish to find.  In particular, if you take a binary data set and flip
 what it means to be a positive or negative example, you will end up
-with completely difference precision and recall values.  It is
+with completely different precision and recall values.  It is
 \emph{not} the case that precision on the flipped task is equal to
 recall on the original task (nor vice versa).  Consequently, f-measure
 is also not the same.  For some tasks where people are less sure about
@@ -750,7 +751,7 @@ not entirely true.
 For example, in person identification, we might try to classify every
 pixel in an image based on whether it contains a person or not.  If we
 have $100$ training images, each with $10,000$ pixels, then we have a
-total of $1m$ training examples.  The classification for a pixel in
+total of $1$M training examples.  The classification for a pixel in
 image $5$ is highly dependent on the classification for a neighboring
 pixel in the same image.  So if one of those pixels happens to fall in
 training data, and the other in development (or cross validation)
@@ -776,7 +777,7 @@ validation.  How impressed should your boss be?  It depends.  If this
 $0.1\%$ improvement was measured over $1000$ examples, perhaps not too
 impressed.  It would mean that Gabe got exactly one more example right
 than you did.  (In fact, they probably got $15$ more right and $14$ more
-wrong.)  If this $0.1\%$ impressed was measured over $1,000,000$
+wrong.)  If this $0.1\%$ improvement was measured over $1,000,000$
 examples, perhaps this is more impressive.
 
 This is one of the most fundamental questions in statistics.  You have
@@ -784,7 +785,7 @@ a scientific hypothesis of the form ``Gabe's algorithm is better than
 mine.''  You wish to test whether this hypothesis is true.  You are
 testing it against the \concept{null hypothesis}, which is that Gabe's
 algorithm is no better than yours.  You've collected data (either
-$1000$ or $1m$ data points) to measure the strength of this
+$1000$ or $1$M data points) to measure the strength of this
 hypothesis.  You want to ensure that the difference in performance of
 these two algorithms is \concept{statistically significant}: i.e., is
 probably not just due to random luck.  (A more common question
@@ -1013,10 +1014,10 @@ Because one of the key questions in machine learning is the question of represen
 Here, the second term, the \concept{approximation error}, measures the quality of the model family\footnote{The ``model family'' (such as depth 20 decision trees, or linear classifiers) is often refered to as the \concept{hypothesis class}. The hypothesis class $\cF$ denotes the set of all possible classifiers we consider, such as all linear classifiers. An classifier $f \in \cF$ is sometimes called a \concept{hypothesis}, though we generally avoid this latter terminology here.}. One way of thinking of approximation error is: suppose someone gave me infinite data to train on---how well could I do with this representation?
 The first term, the \concept{estimation error}, measures how far the actual learned classifier $f$ is from the optimal classifier $f^*$. You can think of this term as measuring how much you have to pay for the fact that you \emph{don't} have infinite training data.
 
-Unfortunately, it is nearly impossible to \emph{compute} the estimation error and approxiation error, except in constructed cases.
+Unfortunately, it is nearly impossible to \emph{compute} the estimation error and approximation error, except in constructed cases.
 This doesn't make the decomposition useless.
 Decompositions like this are very useful for designing debugging strategies.
-For instance, the \text{CheatingIsFun} strategy is designed explicitly to ensure that the approximation error is zero, and therefore isolating all error into the estimation error.
+For instance, the \feat{CheatingIsFun} strategy is designed explicitly to ensure that the approximation error is zero, and therefore isolating all error into the estimation error.
 
 There is a fundamental trade-off between estimation error and approximation error.
 As you make your representation more complex, you make $\cF$ bigger.

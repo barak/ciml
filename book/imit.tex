@@ -34,7 +34,7 @@ The world then changes, moves to time step $t+1$, sensor readings $\vx_{t+1}$ ar
 The goal is to learn a function $f$ that maps from sensor readings $\vx_t$ to actions.
 Because of close connections to the field of \concept{reinforcement learning}, this function is typically called a \concept{policy}.
 The measure of success of a policy is: if we were to run this policy, how much total loss would be suffered.
-In particular, suppose that the \concept{trajectory} (denoted $\vec\tau$) of observation/action/reward triples encountered by your policy is:
+In particular, suppose that the \concept{trajectory} (denoted $\vec\tau$) of observation/action/loss triples encountered by your policy is:
 \begin{align}
   \vec\tau &=
   \vx_1~, \underbrace{a_1}_{=f(\vx_1)}, \ell_1~,~
@@ -243,7 +243,7 @@ This requires a bit more computation, but is a much better approach in general.
 
 One major difference in \emph{requirements} between Dagger (Algorithm~\ref{alg:imit:dagger}) and SupervisedIL (Algorithm~\ref{alg:imit:supertrain}) is the requirement of interaction with the expert.
 In SupervisedIL, you only need access to a bunch of trajectories taken by the expert, \emph{passively}.
-In Dagger, you need access to them expert themselves, so you can ask questions like ``if you saw configuration $\vx$, what would you do?''
+In Dagger, you need access to the expert themselves, so you can ask questions like ``if you saw configuration $\vx$, what would you do?''
 This puts \emph{much} more demand on the expert.
 
 Another question that arises is: what should $N$, the number of trajectories generated in each round, be?
@@ -346,7 +346,7 @@ In this case, we have a time horizon $T=4$.
 We want to learn a policy $f$ that first predicts ``noun'' then ``verb'' then ``adj'' then ``noun'' on this input.
 
 Let's suppose that the input to $f$ consists of features extracted both from the input ($\vx)$ and the current predicted output prefix $\hat\vy$, denoted $\phi(\vx, \hat\vy)$.
-For instance, $\phi(\vx,\hat\vy)$ might represent a similar set of features to those use in Chapter~\ref{sec:srl}.
+For instance, $\phi(\vx,\hat\vy)$ might represent a similar set of features to those used in Chapter~\ref{sec:srl}.
 It is perhaps easiest to think of $f$ as just a classifier:
 given some features of the input sentence $\vx$ (``monsters eat tasty bunnies''),
 and some features about previous predictions in the output prefix (so far, produced ``noun verb''),
@@ -389,9 +389,9 @@ Each structured training example (a pair of sentence and tag-sequence) gives ris
 At training time, a predict tag seqence is generated left-to-right, starting with the empty sequence.
 At any given time step, you are attempting to predict the label of the $t$th word in the input.
 You define a feature vector $\phi(\vx,\hat\vy)$, which will typically consist of: (a) the $t$th word, (b) left and right neighbors of the $t$th word, (c) the last few predictions in $\hat\vy$, and (d) anything else you can think of.
-\emph{In particular,} the features are \emph{not} limited to Markov style features, because we're not longer trying to do dynamic programming.
+\emph{In particular,} the features are \emph{not} limited to Markov style features, because we're no longer trying to do dynamic programming.
 The expert label for the $t$th word is just the corresponding label in the ground truth $\vy$.
-Given all this, one can run Dagger (Algorithm~\ref{alg:imit:dldfs}) exactly as specified.
+Given all this, one can run Dagger (Algorithm~\ref{alg:imit:dagger}) exactly as specified.
 
 Moving to structured prediction problems other than sequence labeling problems is beyond the scope of this book.
 The general framework is to cast your structured prediction problem as a sequential decision making problem.

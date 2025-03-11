@@ -269,15 +269,15 @@ you guessed ``like'') you would classify all $10$ of them correctly.
 In the YES set (where you guessed ``hate'') you would classify $8$
 (out of $10$) of them correctly.  So overall you would classify $18$
 (out of $20$) correctly.  Thus, we'll say that the \emph{score} of the
-``Is this a System's course?'' question is $18/20$.
+``Is this a Systems course?'' question is $18/20$.
 
 \thinkaboutit{How many training examples would you classify correctly
   for each of the other three features from
   Figure~\ref{fig:dt_histogram}?}
 
-You will then repeat this computation for each of the available
-features to us, compute the scores for each of them.  When you must
-choose which feature consider first, you will want to choose the one
+You will then repeat this computation for each of the features available
+to us, and compute the scores for each of them.  When you must
+choose which feature to consider first, you will want to choose the one
 with the highest score.
 
 But this only lets you choose the \emph{first} feature to ask about.
@@ -415,7 +415,7 @@ Note that the loss function is something that \emph{you} must decide
 on based on the goals of learning.
 
 \begin{mathreview}{Expected Values}
-We write $\Ep_{(\vx,y) \sim \cD} [ \ell(y, f(\vx)) ]$ for the expected loss. Expectation means ``average.'' This is saying ``if you drew a bunch of $(x,y)$ pairs independently at random from $\cD$, what would your \emph{average} loss be?% (More formally, what would be the average of $\ell(y,f(\vx))$ be over these random draws?)
+We write $\Ep_{(\vx,y) \sim \cD} [ \ell(y, f(\vx)) ]$ for the expected loss. Expectation means ``average.'' This is saying ``if you drew a bunch of $(x,y)$ pairs independently at random from $\cD$, what would your \emph{average} loss be? % (More formally, what would be the average of $\ell(y,f(\vx))$ be over these random draws?)
 More formally, if $\cD$ is a discrete probability distribution, then this expectation can be expanded as:
 %
 \begin{equation}
@@ -423,7 +423,7 @@ More formally, if $\cD$ is a discrete probability distribution, then this expect
 \end{equation}
 %
 This is \emph{exactly} the weighted average loss over the all $(\vx,y)$ pairs in $\cD$, weighted by their probability, $\cD(\vx,y)$.
-If $D$ is a \emph{finite discrete distribution}, for instance defined by a finite data set $\{ (\vx_1,y_1), \dots, (\vx_N,y_N)$ that puts equal weight on each example (probability $1/N$), then we get:
+If $D$ is a \emph{finite discrete distribution}, for instance defined by a finite data set $\{ (\vx_1,y_1), \dots, (\vx_N,y_N)\}$ that puts equal weight on each example (probability $1/N$), then we get:
 %
 \begin{align}
 \Ep_{(\vx,y) \sim D} [ \ell(y, f(\vx)) ]
@@ -526,9 +526,9 @@ can compute our \concept{training error}, $\hat \ep$:
 
 That is, our training error is simply our \emph{average error} over
 the training data.  \thinkaboutit{Verify by calculation that we can
-  write our training error as $\Ep_{(\vx,y) \sim D} \big[ \ell(y,
-  f(\vx)) \big]$, by thinking of $D$ as a distribution that places
-  probability $1/N$ to each example in $D$ and probability $0$ on
+  write our training error as $\Ep_{(\vx,y) \sim \cD} \big[ \ell(y,
+  f(\vx)) \big]$, by thinking of $\cD$ as a distribution that places
+  probability $1/N$ on each example in $D$ and probability $0$ on
   everything else.}
 
 Of course, we can drive $\hat \ep$ to zero by simply memorizing our
@@ -549,7 +549,7 @@ machine learning: \bigemph{Given (i) a loss function $\ell$ and (ii) a
   respect to $\ell$.}
 
 A very important comment is that we should \emph{never} expect a machine learning algorithm to generalize beyond the data distribution it has seen at training time.
-In a famous---if posssibly apocryphal---example from the 1970s, the US Government wanted to train a classifier to distinguish between US tanks and Russian tanks.
+In a famous---if possibly apocryphal---example from the 1970s, the US Government wanted to train a classifier to distinguish between US tanks and Russian tanks.
 They collected a training and test set, and managed to build a classifier with nearly 100\% accuracy on that data.
 But when this classifier was run in the ``real world'', it failed miserably.
 It had not, in fact, learned to distinguish between US tanks and Russian tanks, but rather just between clear photos and blurry photos.

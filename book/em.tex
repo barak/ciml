@@ -55,12 +55,12 @@ As a starting point, let's consider a simple heuristic and then complexify it.
 The heuristic is the ``majority vote'' heuristic and works as follows.
 First, we estimate $t_m$ as the most common answer for question $m$:
 $t_m = \argmax_t \sum_n \Ind[a_{n,m} = t]$.
-Once we have a guess for each true answer, we estimate each students' score as how many answers they produced that match this guessed key:
+Once we have a guess for each true answer, we estimate each student's score as how many answers they produced that match this guessed key:
 $s_n = \frac 1 M \sum_m \Ind[a_{n,m} = t_m]$.
 
 Once we have these scores, however, we might want to trust some of the students more than others.
 In particular, answers from students with high scores are perhaps more likely to be correct, so we can \emph{recompute} the ground truth, according to weighted votes.
-The weight of the votes will be precisely the score the corresponding each student:
+The weight of the votes will be precisely the score corresponding to each student:
 %
 \begin{align}
   t_m = \argmax_t \sum_n s_n \Ind[a_{n,m} = t]
@@ -70,7 +70,7 @@ You can recognize this as a \emph{chicken and egg problem}. If you knew the stud
 A very common strategy in computer science for dealing with such chicken and egg problems is to iterate.
 Take a guess at the first, compute the second, recompute the first, and so on.
 
-In order to develop this idea formally, we have to case the problem in terms of a probabilistic model with a generative story.
+In order to develop this idea formally, we have to cast the problem in terms of a probabilistic model with a generative story.
 The generative story we'll use is:
 %
 \begin{enumerate}
@@ -80,12 +80,12 @@ The generative story we'll use is:
 \end{enumerate}
 ~
 In the first step, we generate the true answers independently by flipping a fair coin.
-In the second step, each students' overall score is determined to be a uniform random number between zero and one.
-The tricky step is step three, where each students' answer is generated for each question.
+In the second step, each student's overall score is determined to be a uniform random number between zero and one.
+The tricky step is step three, where each student's answer is generated for each question.
 Consider student $n$ answering question $m$, and suppose that $s_n = 0.9$.
 If $t_m = 1$, then $a_{n,m}$ should be 1 (i.e., correct) 90\% of the time;
 this can be accomplished by drawing the answer from $\Ber(0.9)$.
-On the other hand, if $t_m = 0$, then $a_{n,m}$ should 1 (i.e., incorrect) 10\% of the time;
+On the other hand, if $t_m = 0$, then $a_{n,m}$ should be 1 (i.e., incorrect) 10\% of the time;
 this can be accomplished by drawing the answer from $\Ber(0.1)$.
 The exponent in step 3 selects which of two Bernoulli distributions to draw from, and then implements this rule.
 
@@ -335,7 +335,7 @@ distribution is a Gaussian.
 
 \thinkaboutit{Aside from the fact that GMMs use soft assignments and $K$-means uses hard assignments, there are other differences between the two approaches.  What are they?}
 
-Just as in the $K$-means algorithm, this approach is succeptible to
+Just as in the $K$-means algorithm, this approach is susceptible to
 local optima and quality of initialization.  The heuristics for
 computing better initializers for $K$-means are also useful here.
 

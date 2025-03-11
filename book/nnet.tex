@@ -6,7 +6,7 @@
 \item Explain the biological inspiration for multi-layer neural
   networks.
 \item Construct a two-layer network that can solve the XOR problem.
-\item Implement the back-propogation algorithm for training
+\item Implement the back-propagation algorithm for training
   multi-layer networks.
 \item Explain the trade-off between depth and breadth in network
   structure.
@@ -32,7 +32,7 @@ there is one layer of weights.  Now, instead of directly connecting
 the inputs to the outputs, we will insert a layer of ``hidden'' nodes,
 moving from a single-layer network to a \concept{multi-layer network}.
 But introducing a non-linearity at inner layers, this will give us
-non-linear decision boundaires.  In fact, such networks are able to
+non-linear decision boundaries.  In fact, such networks are able to
 express almost any function we want, not just linear functions.  The
 trade-off for this flexibility is increased complexity in parameter
 tuning and model design.
@@ -61,7 +61,7 @@ layers of \emph{trained} weights.)
 
 Prediction with a neural network is a straightforward generalization
 of prediction with a perceptron.  First you compute activations of the
-nodes in the hidden unit based on the inputs and the input weights.
+nodes in the hidden layer based on the inputs and the input weights.
 Then you compute activations of the output unit given the hidden unit
 activations and the second layer of weights.
 
@@ -82,7 +82,7 @@ vector of weights feeding in to node $i$.
 
 One example link function is the \concept{sign} function.  That is, if
 the incoming signal is negative, the activation is $-1$.  Otherwise
-the activation is $+1$.  This is a potentially useful activiation
+the activation is $+1$.  This is a potentially useful activation
 function, but you might already have guessed the problem with it: it
 is non-differentiable.
 
@@ -126,10 +126,10 @@ You can write this entire computation out in one line as:
 \end{align}
 %
 Where the second line is short hand assuming that $\tanh$ can take a
-vector as input and product a vector as output.
+vector as input and produce a vector as output.
 
 \thinkaboutit{Is it necessary to use a link function at all?  What
-  would happen if you just used the identify function as a link?}
+  would happen if you just used the identity function as a link?}
 
 \TableSize{large}{nnet:xor}{Small XOR data set.}{r|rrr}{
   $y$ & $x_0$ & $x_1$ & $x_2$ \\
@@ -153,17 +153,18 @@ units.  The key idea is to make the first hidden unit compute an
 an ``and'' function: $x_1 \land x_2$.  The the output can combine
 these into a single prediction that mimics XOR.  Once you have the
 first hidden unit activate for ``or'' and the second for ``and,'' you
-need only set the output weights as $-2$ and $+1$, respectively.
+need only set the output weights as $+1$ and $-2$, respectively, and
+the output bias to $-2$.
 
 \thinkaboutit{Verify that these output weights will actually give you XOR.}
 
 To achieve the ``or'' behavior, you can start by setting the bias to
-$-0.5$ and the weights for the two ``real'' features as both being
+$0.5$ and the weights for the two ``real'' features as both being
 $1$.  You can check for yourself that this will do the ``right thing''
 if the link function were the sign function.  Of course it's not, it's
 $\tanh$.  To get $\tanh$ to mimic $\sign$, you need to make the dot
 product either really really large or really really small.  You can
-accomplish this by setting the bias to $-500,000$ and both of the two
+accomplish this by setting the bias to $500,000$ and both of the two
 weights to $1,000,000$.  Now, the activation of this unit will be just
 slightly above $-1$ for $\vx = \langle -1,-1 \rangle$ and just
 slightly below $+1$ for the other three examples.
@@ -211,7 +212,7 @@ units.  If you only have a few examples, you should probably restrict
 the number of hidden units in your network.
 
 The number of units is both a form of inductive bias and a form of
-regularization.  In both view, the number of hidden units controls how
+regularization.  In both views, the number of hidden units controls how
 complex your function will be.  Lots of hidden units $\Rightarrow$
 very complicated function.  %Figure~\ref{fig:nnet:units} shows training
 %and test error for neural networks trained with different numbers of
@@ -368,7 +369,7 @@ gradients backward through the network, starting at the end.
 The complete instantiation of gradient descent for a two layer network
 with $K$ hidden units is sketched in
 Algorithm~\ref{alg:nnet:twolayertrain}.  Note that this really is
-\emph{exactly} a gradient descent algorithm; the only different is
+\emph{exactly} a gradient descent algorithm; the only difference is
 that the computation of the gradients of the input layer is moderately
 complicated.
 
@@ -437,7 +438,7 @@ Random initialization of the weights of a network is a way to address
 random weights (say, uniform between $-0.1$ and $0.1$), the network is
 unlikely to fall into the trivial, symmetric local optimum.  Moreover,
 by training a collection of networks, each with a different random
-initialization, you can often obtain better solutions that with just
+initialization, you can often obtain better solutions than with just
 one initialization.  In other words, you can train ten networks with
 different random seeds, and then pick the one that does best on
 held-out data.  Figure~\ref{fig:nnet:converge} shows prototypical
@@ -513,7 +514,7 @@ computes derivatives of the edge weights for a given input.
 \FORALL{input nodes $u$}
 \SETST{$h_u$}{corresponding feature of $\vx$}
 \ENDFOR
-\FORALL{nodes $v$ in the network whose parent's are computed}
+\FORALL{nodes $v$ in the network whose parents are computed}
 \SETST{$a_v$}{$\sum_{u \in \textit{par}(v)} w_{(u,v)} h_u$}
 \SETST{$h_v$}{$\tanh(a_v)$}
 \ENDFOR
@@ -560,7 +561,7 @@ gradients themselves.  This is also explained pictorially in
 Figure~\ref{fig:nnet:backprop}.
 
 Given the back-propagation algorithm, you can directly run gradient
-descent, using it as a subroutine for computing the gradients.
+descent, using backprop as a subroutine for computing the gradients.
 
 \section{Breadth versus Depth}
 
@@ -610,8 +611,8 @@ constant depth.  The formal theorem is below:
 \end{theorem}
 
 This is a very famous result because it shows that constant-depth
-circuits are less powerful that deep circuits.  Although a neural
-network isn't exactly the same as a circuit, the is generally believed
+circuits are less powerful than deep circuits.  Although a neural
+network isn't exactly the same as a circuit, it is generally believed
 that the same result holds for neural networks.  At the very least,
 this gives a strong indication that depth might be an important
 consideration in neural networks.
@@ -699,7 +700,7 @@ widths, $\ga_i$, the centers of the Gaussian bumps, $\vw_i$ and the
 connections between the Gaussian bumps and the output unit, $\vec v$.
 This can all be done using back-propagation.  The gradient terms for
 $\vec v$ remain unchanged from before, the the derivates for the other
-variables differ (see Exercise~\ref{}).
+variables differ.
 
 One of the big questions with RBF networks is: where should the
 Gaussian bumps be centered?  One can, of course, apply

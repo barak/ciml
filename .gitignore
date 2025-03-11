@@ -26,3 +26,6 @@
 
 # ignore downloaded files
 /book/picins.sty
+
+# ignore MacOS support files
+.DS_Store
